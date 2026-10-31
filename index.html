@@ -147,7 +147,7 @@
         
         .b2b-desc { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 25px; line-height: 1.6; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto; }
 
-        .btn-excel { display: flex; align-items: center; justify-content: center; gap: 10px; background: rgba(59,130,246,0.1); border: 2px solid var(--primary); color: white; padding: 16px; border-radius: 14px; font-size: 0.95rem; font-weight: 800; margin: 25px auto 10px auto; max-width: 800px; transition: all 0.3s ease; text-align: center; line-height: 1.4;}
+        .btn-excel { display: flex; align-items: center; justify-content: center; gap: 10px; background: rgba(59,130,246,0.1); border: 2px solid var(--primary); color: white; padding: 16px; border-radius: 14px; font-size: 0.95rem; font-weight: 800; transition: all 0.3s ease; text-align: center; line-height: 1.4;}
         .btn-excel:hover { background: var(--primary); box-shadow: 0 0 25px rgba(59,130,246,0.6); transform: translateY(-3px); }
 
         .precios-grid { display: grid; grid-template-columns: 1fr; gap: 20px; margin-top: 20px; }
@@ -227,6 +227,44 @@
         .btn-aplicar { background: rgba(167, 139, 250, 0.1); color: #a78bfa; border: 1px solid #a78bfa; padding: 10px 15px; border-radius: 8px; cursor: pointer; font-weight: 600; transition: 0.3s; font-size: 0.95rem;}
         .btn-aplicar:hover { background: #a78bfa; color: black; }
         .coupon-msg { text-align: center; font-size: 0.9rem; margin-bottom: 15px; font-weight: 600; min-height: 20px; }
+
+        /* MODAL DE PRECIOS EN VIVO */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); backdrop-filter: blur(5px);
+            display: none; justify-content: center; align-items: center;
+            z-index: 999999; opacity: 0; transition: opacity 0.3s ease; padding: 20px;
+        }
+        .modal-overlay.active { display: flex; opacity: 1; }
+        .modal-content {
+            background: var(--card-bg); border: 1px solid var(--border);
+            width: 100%; max-width: 700px; max-height: 85vh; border-radius: 16px;
+            display: flex; flex-direction: column; overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+        }
+        .modal-header {
+            padding: 18px 20px; border-bottom: 1px solid var(--border);
+            display: flex; justify-content: space-between; align-items: center;
+            background: #000;
+        }
+        .modal-header h3 { margin: 0; color: white; font-size: 1.15rem; }
+        .btn-close {
+            background: transparent; border: none; color: var(--text-muted);
+            font-size: 1.8rem; cursor: pointer; transition: 0.3s; line-height: 1;
+        }
+        .btn-close:hover { color: #ef4444; }
+        .modal-body { padding: 0; overflow-y: auto; background: var(--bg); }
+        .loading-text { text-align: center; color: var(--primary); font-weight: bold; padding: 40px 20px; }
+        .tabla-precios { width: 100%; border-collapse: collapse; text-align: left; }
+        .tabla-precios th, .tabla-precios td {
+            padding: 14px 20px; border-bottom: 1px solid var(--border);
+            font-size: 0.9rem; color: #d4d4d8;
+        }
+        .tabla-precios th { color: var(--primary); font-weight: 800; position: sticky; top: 0; background: #000; box-shadow: 0 2px 5px rgba(0,0,0,0.5); }
+        .tabla-precios tr:hover td { background: rgba(59,130,246,0.05); }
+        @media (max-width: 600px) {
+            .tabla-precios th, .tabla-precios td { padding: 12px 10px; font-size: 0.85rem; }
+        }
     </style>
 </head>
 <body>
@@ -305,9 +343,24 @@
                     </details>
                 </div>
 
-                <a href="https://docs.google.com/spreadsheets/d/1D-ZlJbg8xTBXbZnEiYqgsiWMkf_umuhLxbqd09p_YJo/edit?usp=sharing" target="_blank" class="btn-excel">
-                    📊 Ver Precios de Fábrica (Lista Completa)
-                </a>
+                <!-- BOTÓN MODAL Y PANEL 2 AGREGADOS AQUÍ -->
+                <div style="display: flex; flex-direction: column; gap: 10px; max-width: 800px; margin: 25px auto 10px auto;">
+                    <button type="button" class="btn-excel" onclick="abrirModalPrecios()" style="margin: 0; width: 100%; cursor: pointer;">
+                        📊 Ver Precios de Fábrica (Panel 1 - En vivo)
+                    </button>
+                    
+                    <details style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 12px; padding: 15px;">
+                        <summary style="color: #d4d4d8; font-weight: 600; cursor: pointer; list-style: none; text-align: center;">
+                            🔗 Acceso Alternativo (Panel 2 - Referidos) ▼
+                        </summary>
+                        <div style="margin-top: 15px; font-size: 0.9rem; color: #a1a1aa; text-align: center;">
+                            <p style="margin-bottom: 10px;">Si prefieres usar nuestro segundo proveedor, regístrate con el siguiente código para obtener beneficios:</p>
+                            <strong style="color: var(--primary); font-size: 1.1rem; background: #000; padding: 5px 15px; border-radius: 8px; border: 1px dashed var(--primary);">TU_CÓDIGO_AQUÍ</strong>
+                            <a href="https://link-de-tu-panel-2.com" target="_blank" style="display: block; margin-top: 12px; color: white; text-decoration: underline;">Ir a registrarse al Panel 2</a>
+                        </div>
+                    </details>
+                </div>
+                <!-- FIN BOTÓN MODAL Y PANEL 2 -->
 
                 <div class="aviso-inversion">
                     <h4 class="aviso-title">⚠️ ATENCIÓN</h4>
@@ -636,7 +689,20 @@
         </p>
     </footer>
 
-    <!-- SCRIPT DE FUNCIONAMIENTO (Cupón) CORREGIDO -->
+    <!-- MODAL DE PRECIOS -->
+    <div id="modal-precios" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>📊 Lista de Precios en Vivo</h3>
+                <button class="btn-close" onclick="cerrarModalPrecios()">×</button>
+            </div>
+            <div class="modal-body" id="modal-body-precios">
+                <div class="loading-text">Conectando con la base de datos... ⏳</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT DE FUNCIONAMIENTO (Cupón y Google Sheets) -->
     <script>
         function aplicarCupon() {
             const input = document.getElementById('coupon-input').value.trim().toLowerCase();
@@ -665,6 +731,51 @@
                 msg.style.color = '#ef4444';
                 msg.innerText = 'Cupón inválido o expirado.';
                 setTimeout(() => { msg.innerText = ''; }, 3000);
+            }
+        }
+
+        // FUNCIONES DE GOOGLE SHEETS PARA EL MODAL
+        const urlCSV = "https://docs.google.com/spreadsheets/d/1D-ZlJbg8xTBXbZnEiYqgsiWMkf_umuhLxbqd09p_YJo/export?format=csv";
+
+        function abrirModalPrecios() {
+            const modal = document.getElementById('modal-precios');
+            modal.style.display = 'flex';
+            setTimeout(() => modal.classList.add('active'), 10);
+            cargarPreciosSheets();
+        }
+
+        function cerrarModalPrecios() {
+            const modal = document.getElementById('modal-precios');
+            modal.classList.remove('active');
+            setTimeout(() => modal.style.display = 'none', 300);
+        }
+
+        async function cargarPreciosSheets() {
+            const body = document.getElementById('modal-body-precios');
+            try {
+                const response = await fetch(urlCSV);
+                const data = await response.text();
+                
+                const filas = data.split('\n').filter(row => row.trim() !== '');
+                let html = '<table class="tabla-precios">';
+                
+                filas.forEach((fila, index) => {
+                    const columnas = fila.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g) || fila.split(',');
+                    
+                    if (index === 0) {
+                        html += '<thead><tr>';
+                        columnas.forEach(col => html += `<th>${col.replace(/"/g, '').trim()}</th>`);
+                        html += '</tr></thead><tbody>';
+                    } else {
+                        html += '<tr>';
+                        columnas.forEach(col => html += `<td>${col.replace(/"/g, '').trim()}</td>`);
+                        html += '</tr>';
+                    }
+                });
+                html += '</tbody></table>';
+                body.innerHTML = html;
+            } catch (error) {
+                body.innerHTML = '<div class="loading-text" style="color:#ef4444;">Error al cargar la lista. Intenta nuevamente más tarde.</div>';
             }
         }
 
