@@ -17,47 +17,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEXO STREAM | Herramientas y Negocios Digitales</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- FUENTES: Inter (Base) y Playfair Display (Elegante para títulos) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,600;0,800;1,600&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --bg: #09090b;
-            --card-bg: #18181b;
+            /* Paleta Premium Mejorada */
+            --bg-dark: #050505;
+            --card-glass: rgba(24, 24, 27, 0.65);
             --primary: #3b82f6;
-            --primary-hover: #2563eb;
+            --primary-glow: rgba(59, 130, 246, 0.4);
             --accent: #f59e0b; 
-            --green: #22c55e;
+            --accent-glow: rgba(245, 158, 11, 0.4);
+            --green: #10b981;
             --text: #f4f4f5;
             --text-muted: #a1a1aa;
-            --border: #27272a;
+            --border-glass: rgba(255, 255, 255, 0.08);
+            
+            /* Tipografías */
+            --font-base: 'Inter', sans-serif;
+            --font-lujo: 'Playfair Display', serif;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background-color: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-base); }
+        
+        /* FONDO CON PROFUNDIDAD Y TEXTURA SUTIL */
+        body { 
+            background-color: var(--bg-dark); 
+            background-image: radial-gradient(circle at 50% 0%, rgba(30,30,35,1) 0%, rgba(5,5,5,1) 60%);
+            color: var(--text); 
+            line-height: 1.6; 
+            overflow-x: hidden; 
+        }
+        
         a { text-decoration: none; }
 
-        /* HEADER */
+        /* HEADER GLASSMORPHISM */
         header { 
             display: flex; justify-content: space-between; align-items: center; 
-            padding: 15px 5%; border-bottom: 1px solid var(--border); 
-            background: rgba(9,9,11,0.95); position: sticky; top: 0; z-index: 100; 
-            backdrop-filter: blur(10px); 
+            padding: 15px 5%; border-bottom: 1px solid var(--border-glass); 
+            background: rgba(5, 5, 5, 0.7); position: sticky; top: 0; z-index: 100; 
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
         }
-        .logo { font-size: 1.5rem; font-weight: 800; letter-spacing: -1px; }
-        .logo span { color: var(--primary); }
+        .logo { font-family: var(--font-lujo); font-size: 1.8rem; font-weight: 800; letter-spacing: 0.5px; }
+        .logo span { color: var(--primary); font-family: var(--font-base); font-size: 1.4rem; font-weight: 800; letter-spacing: -1px; margin-left: 2px;}
         
         .btn-puente {
-            background: rgba(59, 130, 246, 0.1); border: 2px solid var(--primary); color: white !important; 
-            padding: 10px 18px; border-radius: 8px; font-weight: 700; font-size: 0.9rem; transition: 0.3s;
+            background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-glass); color: white !important; 
+            padding: 10px 18px; border-radius: 8px; font-weight: 600; font-size: 0.9rem; transition: all 0.3s ease;
             display: flex; align-items: center; gap: 5px; text-align: center; justify-content: center;
         }
-        .btn-puente:hover { background: var(--primary); box-shadow: 0 0 15px rgba(59,130,246,0.6); }
+        .btn-puente:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); }
 
         .btn-nav-outline { 
-            background: rgba(34, 197, 94, 0.1); border: 2px solid var(--green); color: var(--green) !important; 
-            padding: 10px 18px; border-radius: 8px; font-weight: 700; font-size: 0.9rem; transition: 0.3s; 
+            background: rgba(16, 185, 129, 0.1); border: 1px solid var(--green); color: var(--green) !important; 
+            padding: 10px 18px; border-radius: 8px; font-weight: 600; font-size: 0.9rem; transition: all 0.3s ease; 
             text-align: center; display: flex; align-items: center; justify-content: center; gap: 5px;
         }
-        .btn-nav-outline:hover { background: var(--green); color: black !important; box-shadow: 0 0 15px rgba(34,197,94,0.4); }
+        .btn-nav-outline:hover { background: var(--green); color: black !important; box-shadow: 0 0 15px rgba(16,185,129,0.4); }
 
         @media (max-width: 800px) {
             header { flex-direction: column; gap: 15px; padding: 15px 5%; }
@@ -65,243 +83,201 @@
             .btn-puente, .btn-nav-outline { font-size: 0.85rem; padding: 10px; }
         }
 
-        /* HERO SECTION */
-        .hero { text-align: center; padding: 50px 5% 40px; }
-        .hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); margin-bottom: 15px; line-height: 1.2; }
-        .hero h1 span { color: var(--primary); }
-        .hero p { font-size: 1.1rem; color: var(--text-muted); max-width: 700px; margin: 0 auto 25px; }
+        /* HERO SECTION ELEGANT */
+        .hero { text-align: center; padding: 60px 5% 50px; }
+        .hero h1 { font-family: var(--font-lujo); font-size: clamp(2.5rem, 6vw, 4rem); margin-bottom: 15px; line-height: 1.1; font-weight: 800; letter-spacing: -0.5px;}
+        .hero h1 span { color: transparent; background: linear-gradient(90deg, #60a5fa, #3b82f6); -webkit-background-clip: text; }
+        .hero p { font-size: 1.15rem; color: var(--text-muted); max-width: 700px; margin: 0 auto 30px; font-weight: 300;}
+        .hero-botones { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; flex-wrap: wrap; }
+        .hero-tags { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 12px; max-width: 850px; margin: 0 auto; }
+        .hero-tags span { background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-glass); color: #d4d4d8; padding: 8px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 400; transition: all 0.3s ease; backdrop-filter: blur(4px);}
+        .hero-tags span:hover { border-color: var(--primary); color: white; background: rgba(59, 130, 246, 0.1); transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.3);}
 
-        .hero-botones {
-            display: flex; justify-content: center; gap: 15px; margin-bottom: 25px; flex-wrap: wrap;
-        }
-
-        .hero-tags {
-            display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 10px; max-width: 850px; margin: 0 auto;
-        }
-        .hero-tags span {
-            background: rgba(59, 130, 246, 0.08); border: 1px solid var(--border); color: #d4d4d8;
-            padding: 7px 13px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; transition: all 0.3s ease;
-        }
-        .hero-tags span:hover { border-color: var(--primary); color: white; background: rgba(59, 130, 246, 0.15); transform: translateY(-2px); }
-
+        /* PRODUCTOS CONTAINER - GLASSMORPHISM */
         .productos-container { max-width: 1100px; margin: 0 auto 80px; padding: 0 5%; }
         
         .producto-details { 
-            background: var(--card-bg); border: 1px solid var(--box-color, var(--border)); 
-            border-radius: 20px; margin-bottom: 25px; overflow: hidden; transition: all 0.3s ease; 
+            background: var(--card-glass); 
+            border: 1px solid var(--border-glass); 
+            border-radius: 20px; margin-bottom: 25px; overflow: hidden; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 25px rgba(0,0,0,0.5);
         }
         .producto-details[open] { 
-            border-color: var(--box-color, var(--primary)); 
-            box-shadow: 0 0 25px var(--box-color-shadow, rgba(59,130,246,0.2)); 
+            border-color: var(--box-color); 
+            background: rgba(24, 24, 27, 0.85);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6), 0 0 20px var(--box-color-shadow); 
         }
         
-        .producto-summary { 
-            padding: 22px 15px; color: white; background: transparent; border: none; 
-            display: flex; justify-content: space-between; align-items: center; cursor: pointer; 
-            user-select: none; list-style: none; 
-        }
+        .producto-summary { padding: 22px 20px; color: white; background: transparent; border: none; display: flex; justify-content: space-between; align-items: center; cursor: pointer; user-select: none; list-style: none; }
         .producto-summary::-webkit-details-marker { display: none; }
-        .summary-info { display: flex; align-items: center; gap: 12px; }
+        .summary-info { display: flex; align-items: center; gap: 15px; }
         
-        .summary-img { 
-            width: 45px; height: 45px; border-radius: 10px; display: flex; align-items: center; 
-            justify-content: center; overflow: hidden; background: transparent; flex-shrink: 0;
-        }
-        .summary-img img { width: 100%; height: 100%; object-fit: contain; }
-        .summary-title h3 { margin: 0; font-size: 1.15rem; line-height: 1.3;}
-        .summary-title p { font-size: 0.85rem; color: var(--text-muted); margin: 0; font-weight: 400; line-height: 1.4; margin-top: 2px;}
+        .summary-img { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; overflow: hidden; background: rgba(255,255,255,0.03); flex-shrink: 0; border: 1px solid var(--border-glass);}
+        .summary-img img { width: 80%; height: 80%; object-fit: contain; }
+        .summary-title h3 { margin: 0; font-size: 1.2rem; line-height: 1.3; font-family: var(--font-lujo); letter-spacing: 0.5px;}
+        .summary-title p { font-size: 0.85rem; color: var(--text-muted); margin: 0; font-weight: 300; line-height: 1.4; margin-top: 4px;}
 
-        .toggle-btn { 
-            color: var(--primary); font-weight: 800; font-size: 0.8rem; 
-            background: rgba(59,130,246,0.1); padding: 6px 12px; border-radius: 20px; white-space: nowrap; 
-        }
-
-        .producto-content { padding: 0 20px 30px 20px; border-top: 1px solid var(--border); margin-top: 5px; padding-top: 25px; }
+        .toggle-btn { color: var(--primary); font-weight: 600; font-size: 0.8rem; background: rgba(255,255,255,0.05); padding: 8px 14px; border-radius: 20px; white-space: nowrap; border: 1px solid var(--border-glass); transition: 0.3s;}
+        .producto-details[open] .toggle-btn { background: var(--box-color); color: #000; border-color: transparent;}
         
-        .contexto-box { background: #000; border: 1px solid var(--border); border-radius: 16px; padding: 20px; margin-bottom: 30px; }
-        .contexto-box h4 { color: var(--primary); font-size: 1.05rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
-        .contexto-p { color: #d4d4d8; font-size: 0.95rem; margin-bottom: 15px; line-height: 1.6; }
+        .producto-content { padding: 0 25px 35px 25px; border-top: 1px solid var(--border-glass); margin-top: 5px; padding-top: 25px; }
+        
+        /* BOTONES INTERNOS - DISEÑO LUMINOSO */
+        .btn-youtube { display: flex; align-items: center; justify-content: center; gap: 8px; background: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.3); color: #ef4444; padding: 12px 20px; border-radius: 12px; font-weight: 600; font-size: 0.95rem; margin: 20px auto; width: 100%; max-width: 300px; transition: all 0.3s ease; text-align: center; }
+        .btn-youtube:hover { background: rgba(239, 68, 68, 0.15); border-color: #ef4444; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(239,68,68,0.2);}
+        
+        .btn-excel { display: flex; align-items: center; justify-content: center; gap: 10px; background: rgba(59, 130, 246, 0.05); border: 1px solid rgba(59, 130, 246, 0.4); color: white; padding: 16px; border-radius: 14px; font-size: 0.95rem; font-weight: 600; margin: 25px auto 10px auto; max-width: 800px; transition: all 0.3s ease; text-align: center; line-height: 1.4; width: 100%; cursor: pointer; position: relative; overflow: hidden;}
+        .btn-excel::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent); transition: 0.5s; }
+        .btn-excel:hover::before { left: 100%; }
+        .btn-excel:hover { background: rgba(59, 130, 246, 0.15); border-color: var(--primary); box-shadow: 0 0 20px var(--primary-glow); transform: translateY(-2px); }
+        
+        .btn-capturas { display: flex; align-items: center; justify-content: center; gap: 10px; background: rgba(167, 139, 250, 0.05); border: 1px solid rgba(167, 139, 250, 0.4); color: #d8b4fe; padding: 16px; border-radius: 14px; font-size: 0.95rem; font-weight: 600; transition: all 0.3s ease; text-align: center; line-height: 1.4; width: 100%; cursor: pointer; margin-top: 15px;}
+        .btn-capturas:hover { background: rgba(167, 139, 250, 0.15); border-color: #a78bfa; color: white; box-shadow: 0 0 20px rgba(167,139,250,0.3); transform: translateY(-2px);}
 
-        .btn-youtube {
-            display: flex; align-items: center; justify-content: center; gap: 8px;
-            background: rgba(239, 68, 68, 0.1); border: 1px solid #ef4444; color: #ef4444;
-            padding: 12px 20px; border-radius: 10px; font-weight: 700; font-size: 0.95rem;
-            margin: 20px auto; width: 100%; max-width: 300px; transition: all 0.3s ease; text-align: center;
-        }
-        .btn-youtube:hover { background: #ef4444; color: white; box-shadow: 0 0 15px rgba(239, 68, 68, 0.4); transform: translateY(-2px); }
-
-        .beneficios-accordion { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); border-radius: 12px; margin: 20px 0; transition: 0.3s; }
-        .beneficios-accordion summary { padding: 15px 20px; color: var(--primary); font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; background: rgba(59, 130, 246, 0.05); }
+        /* ACORDEONES ESTRUCTURA - ESTILO LIMPIO */
+        .beneficios-accordion { background: rgba(0, 0, 0, 0.2); border: 1px solid var(--border-glass); border-radius: 12px; margin: 20px auto; max-width: 800px; transition: 0.3s; }
+        .beneficios-accordion summary { padding: 16px 20px; color: var(--primary); font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; background: rgba(255, 255, 255, 0.02); }
         .beneficios-accordion summary::-webkit-details-marker { display: none; }
-        .beneficios-accordion summary::after { content: "▼"; font-size: 0.8rem; }
+        .beneficios-accordion summary::after { content: "▼"; font-size: 0.7rem; opacity: 0.7; }
         .beneficios-accordion[open] summary::after { content: "▲"; }
-        
-        .puntos-clave { list-style: none; margin: 0; padding: 15px; display: grid; gap: 15px; }
-        .puntos-clave li { font-size: 0.95rem; color: #e4e4e7; background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.05); border-left: 4px solid var(--border); padding: 15px; border-radius: 8px; display: flex; align-items: flex-start; gap: 12px; }
-        .puntos-clave li:nth-child(1) { border-left-color: var(--primary); }
-        .puntos-clave li:nth-child(2) { border-left-color: var(--green); }
-        .puntos-clave li span { color: var(--bg); background: var(--green); border-radius: 50%; min-width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: bold; flex-shrink: 0; margin-top: 2px; }
+        .acordeon-contenido { padding: 20px; font-size: 0.95rem; color: #d4d4d8; line-height: 1.7; font-weight: 300;}
+        .acordeon-contenido ul { list-style: none; margin-top: 15px; }
+        .acordeon-contenido ul li { margin-bottom: 12px; display: flex; gap: 10px; align-items: flex-start; }
 
-        .aviso-inversion { text-align: center; background: rgba(245, 158, 11, 0.08); border: 1px solid var(--accent); padding: 25px 20px; border-radius: 12px; margin: 30px auto 20px; max-width: 800px; color: #fde68a; font-size: 0.95rem; line-height: 1.8;}
-        .aviso-title { color: var(--accent); font-size: 1.15rem; font-weight: 800; margin-bottom: 12px; display: flex; align-items: center; justify-content: center; gap: 8px;}
-        
-        .b2b-desc { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 25px; line-height: 1.6; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto; }
+        .aviso-inversion { text-align: center; background: rgba(245, 158, 11, 0.03); border: 1px solid rgba(245, 158, 11, 0.2); padding: 25px 20px; border-radius: 12px; margin: 30px auto 20px; max-width: 800px; color: #fde68a; font-size: 0.95rem; line-height: 1.8; font-weight: 300;}
+        .aviso-title { font-family: var(--font-lujo); color: var(--accent); font-size: 1.2rem; font-weight: 600; margin-bottom: 12px; display: flex; align-items: center; justify-content: center; gap: 8px;}
+        .b2b-desc { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 25px; line-height: 1.7; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto; font-weight: 300;}
 
-        .btn-excel { display: flex; align-items: center; justify-content: center; gap: 10px; background: rgba(59,130,246,0.1); border: 2px solid var(--primary); color: white; padding: 16px; border-radius: 14px; font-size: 0.95rem; font-weight: 800; transition: all 0.3s ease; text-align: center; line-height: 1.4;}
-        .btn-excel:hover { background: var(--primary); box-shadow: 0 0 25px rgba(59,130,246,0.6); transform: translateY(-3px); }
-
-        .precios-grid { display: grid; grid-template-columns: 1fr; gap: 20px; margin-top: 20px; }
+        /* GRID Y TARJETAS - DISEÑO FLOTANTE */
+        .precios-grid { display: grid; grid-template-columns: 1fr; gap: 25px; margin-top: 25px; }
         @media (min-width: 768px) { .precios-grid { grid-template-columns: repeat(2, 1fr); } }
 
-        .pack-card, .item-card { background: #000; border: 1px solid var(--border); border-radius: 16px; position: relative; transition: all 0.3s ease !important; }
-        .pack-card { padding: 20px; display: flex; flex-direction: column; }
+        .pack-card, .item-card { 
+            background: rgba(10, 10, 10, 0.6); 
+            border: 1px solid var(--border-glass); 
+            border-radius: 16px; position: relative; 
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            backdrop-filter: blur(5px);
+        }
+        .pack-card { padding: 25px; display: flex; flex-direction: column; }
         .item-card { overflow: hidden; display: flex; flex-direction: column; }
         
-        .pack-card:hover, .item-card:hover { transform: translateY(-5px); border-color: var(--primary) !important; box-shadow: 0 0 25px rgba(59,130,246,0.5) !important; z-index: 10; }
+        .pack-card:hover, .item-card:hover { transform: translateY(-8px); border-color: rgba(255,255,255,0.2); box-shadow: 0 15px 35px rgba(0,0,0,0.6); z-index: 10; }
 
-        .pack-card.vip { border-color: var(--accent); box-shadow: 0 0 20px rgba(245,158,11,0.15); background: linear-gradient(180deg, rgba(245,158,11,0.05) 0%, #000 100%); }
-        .pack-card.vip:hover { border-color: var(--accent) !important; box-shadow: 0 0 30px rgba(245,158,11,0.6) !important; }
-
-        .badge { position: absolute; top: -11px; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; width: max-content; }
-        .badge-oro { background: var(--accent); color: black; }
-
-        .pack-card h3 { font-size: 1.15rem; text-align: center; margin-bottom: 5px; }
-        .pack-card .precio { font-size: 2rem; font-weight: 900; text-align: center; color: white; margin-bottom: 15px; }
-        .pack-card .precio span { font-size: 0.85rem; color: var(--text-muted); }
-
-        .pack-details { background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 20px; flex-grow: 1; }
-        .pack-summary { padding: 15px; font-size: 0.9rem; font-weight: 700; color: var(--primary); cursor: pointer; text-align: center; list-style: none; user-select: none; }
-        .pack-summary.vip-text { color: var(--accent); }
-        .pack-summary::-webkit-details-marker { display: none; }
-        
-        .pack-content { padding: 20px 15px; border-top: 1px solid var(--border); background: #050505; }
-        
-        /* AJUSTES IMPORTANTES EN LISTAS PARA CELULARES */
-        .lista-beneficios { list-style: none; }
-        .lista-beneficios li { 
-            margin-bottom: 15px; 
-            font-size: 0.95rem; 
-            color: #d4d4d8; 
-            display: flex; 
-            align-items: flex-start; 
-            gap: 12px; 
-            line-height: 1.5; 
+        .pack-card.vip { 
+            border-color: rgba(245, 158, 11, 0.3); 
+            box-shadow: 0 0 30px rgba(245,158,11,0.05); 
+            background: linear-gradient(180deg, rgba(245,158,11,0.03) 0%, rgba(10,10,10,0.8) 100%); 
         }
+        .pack-card.vip:hover { border-color: var(--accent); box-shadow: 0 15px 35px rgba(0,0,0,0.6), 0 0 25px var(--accent-glow); }
+
+        .badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; width: max-content; letter-spacing: 0.5px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);}
+        .badge-oro { background: var(--accent); color: black; box-shadow: 0 4px 15px rgba(245,158,11,0.4);}
+
+        .pack-card h3 { font-family: var(--font-lujo); font-size: 1.3rem; text-align: center; margin-bottom: 5px; font-weight: 600;}
+        .pack-card .precio { font-size: 2.2rem; font-weight: 800; text-align: center; color: white; margin-bottom: 20px; letter-spacing: -1px;}
+        .pack-card .precio span { font-size: 0.85rem; color: var(--text-muted); font-weight: 400; letter-spacing: normal;}
+
+        .pack-details { background: rgba(0,0,0,0.2); border: 1px solid var(--border-glass); border-radius: 12px; margin-bottom: 25px; flex-grow: 1; overflow: hidden;}
+        .pack-summary { padding: 15px; font-size: 0.9rem; font-weight: 600; color: #93c5fd; cursor: pointer; text-align: center; list-style: none; user-select: none; background: rgba(255,255,255,0.02);}
+        .pack-summary.vip-text { color: #fcd34d; }
+        .pack-summary::-webkit-details-marker { display: none; }
+        .pack-content { padding: 20px; border-top: 1px solid var(--border-glass); background: transparent; }
+        
+        .lista-beneficios { list-style: none; }
+        .lista-beneficios li { margin-bottom: 15px; font-size: 0.9rem; color: #d4d4d8; display: flex; align-items: flex-start; gap: 12px; line-height: 1.6; font-weight: 300;}
         .lista-beneficios li:last-child { margin-bottom: 0; }
         
-        .btn-comprar { width: 100%; text-align: center; padding: 14px; border-radius: 10px; font-weight: 700; border: none; cursor: pointer; font-size: 0.95rem; display: block; margin-top: auto; transition: all 0.3s ease !important; }
-        .btn-comprar.outline { background: transparent; border: 1px solid var(--border); color: var(--text); }
-        .btn-comprar.outline:hover { background: rgba(59,130,246,0.1); border-color: var(--primary); color: var(--primary); box-shadow: 0 0 15px rgba(59,130,246,0.3); }
-        .btn-comprar.solid { background: var(--primary); color: white; }
-        .btn-comprar.solid:hover { background: var(--primary-hover); box-shadow: 0 0 20px rgba(59,130,246,0.7) !important; transform: scale(1.02); }
-        .btn-comprar.oro { background: var(--accent); color: black; }
-        .btn-comprar.oro:hover { box-shadow: 0 0 20px rgba(245,158,11,0.8) !important; filter: brightness(1.1); transform: scale(1.02); }
+        /* BOTONES DE COMPRA ELEGANTES */
+        .btn-comprar { width: 100%; text-align: center; padding: 14px; border-radius: 12px; font-weight: 600; border: none; cursor: pointer; font-size: 0.95rem; display: block; margin-top: auto; transition: all 0.3s ease; letter-spacing: 0.3px;}
+        .btn-comprar.outline { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: var(--text); }
+        .btn-comprar.outline:hover { background: rgba(255,255,255,0.05); border-color: white; transform: translateY(-2px);}
+        .btn-comprar.solid { background: var(--primary); color: white; box-shadow: 0 4px 15px rgba(59,130,246,0.3);}
+        .btn-comprar.solid:hover { background: var(--primary-hover); box-shadow: 0 6px 20px rgba(59,130,246,0.5); transform: translateY(-2px); }
+        .btn-comprar.oro { background: linear-gradient(135deg, #f59e0b, #d97706); color: black; font-weight: 700; box-shadow: 0 4px 15px rgba(245,158,11,0.3);}
+        .btn-comprar.oro:hover { box-shadow: 0 6px 20px rgba(245,158,11,0.5); filter: brightness(1.1); transform: translateY(-2px); }
 
-        .item-image { width: 100%; aspect-ratio: 16/9; background: #18181b; display: flex; align-items: center; justify-content: center; position: relative; border-bottom: 1px solid var(--border); overflow: hidden; }
-        .item-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
-        .item-card:hover .item-image img { transform: scale(1.05); }
+        .item-image { width: 100%; aspect-ratio: 16/9; background: #000; display: flex; align-items: center; justify-content: center; position: relative; border-bottom: 1px solid var(--border-glass); overflow: hidden; }
+        .item-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; opacity: 0.9;}
+        .item-card:hover .item-image img { transform: scale(1.05); opacity: 1;}
         
-        .item-body { padding: 25px 20px; display: flex; flex-direction: column; flex-grow: 1; }
-        .item-title { font-size: 1.15rem; color: white; text-align: center; margin-bottom: 12px; font-weight: 600; line-height: 1.3;}
-        .item-price { font-size: 1.6rem; font-weight: 900; color: var(--primary); text-align: center; margin-bottom: 15px; }
-        .item-price span { font-size: 0.9rem; font-weight: 400; color: var(--text-muted); }
+        .item-body { padding: 25px; display: flex; flex-direction: column; flex-grow: 1; }
+        .item-title { font-family: var(--font-lujo); font-size: 1.25rem; color: white; text-align: center; margin-bottom: 15px; font-weight: 600; line-height: 1.3;}
+        .item-price { font-size: 1.8rem; font-weight: 800; color: var(--primary); text-align: center; margin-bottom: 20px; letter-spacing: -1px;}
+        .item-price span { font-size: 0.9rem; font-weight: 400; color: var(--text-muted); letter-spacing: normal;}
 
-        footer { text-align: center; padding: 40px 20px; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.9rem; }
-
-        .faq-container { max-width: 700px; margin: 35px auto 25px; text-align: left; }
-        .faq-container h3 { text-align: center; color: #ffffff; font-size: 1.1rem; margin-bottom: 18px; }
-        .faq-container details { background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; margin-bottom: 10px; overflow: hidden; transition: all 0.3s ease; }
-        .faq-container details:hover { border-color: rgba(59, 130, 246, 0.4); }
-        .faq-container summary { cursor: pointer; padding: 15px 18px; color: #ffffff; font-weight: 600; font-size: 0.9rem; list-style: none; position: relative; padding-right: 45px; line-height: 1.4;}
+        footer { text-align: center; padding: 50px 20px 40px; border-top: 1px solid var(--border-glass); color: var(--text-muted); font-size: 0.9rem; font-weight: 300;}
+        
+        .faq-container { max-width: 700px; margin: 0 auto 40px; text-align: left; }
+        .faq-container h3 { font-family: var(--font-lujo); text-align: center; color: #ffffff; font-size: 1.3rem; margin-bottom: 25px; font-weight: 600;}
+        .faq-container details { background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-glass); border-radius: 12px; margin-bottom: 12px; overflow: hidden; transition: all 0.3s ease; }
+        .faq-container details:hover { border-color: rgba(255, 255, 255, 0.1); background: rgba(255, 255, 255, 0.04);}
+        .faq-container summary { cursor: pointer; padding: 18px 20px; color: #e4e4e7; font-weight: 400; font-size: 0.95rem; list-style: none; position: relative; padding-right: 45px; line-height: 1.4;}
         .faq-container summary::-webkit-details-marker { display: none; }
-        .faq-container summary::after { content: "+"; position: absolute; right: 18px; top: 50%; transform: translateY(-50%); font-size: 1.3rem; color: var(--primary); font-weight: 400; }
+        .faq-container summary::after { content: "+"; position: absolute; right: 20px; top: 50%; transform: translateY(-50%); font-size: 1.2rem; color: var(--text-muted); font-weight: 300; }
         .faq-container details[open] summary::after { content: "−"; }
-        .faq-container details[open] summary { border-bottom: 1px solid rgba(255, 255, 255, 0.06); }
-        .faq-container details p { margin: 0; padding: 14px 18px 17px; color: #a1a1aa; font-size: 0.9rem; line-height: 1.6; }
-        
-        .payment-info { margin-top: 25px; font-size: 0.9rem; color: var(--primary); line-height: 1.6; }
+        .faq-container details[open] summary { border-bottom: 1px solid var(--border-glass); }
+        .faq-container details p { margin: 0; padding: 15px 20px 20px; color: #a1a1aa; font-size: 0.9rem; line-height: 1.7; font-weight: 300;}
+        .payment-info { margin-top: 30px; font-size: 0.9rem; color: #d4d4d8; line-height: 1.8; font-weight: 300;}
 
+        /* CUPONES ELEGANTES */
         .coupon-box { display: flex; gap: 10px; margin-bottom: 15px; justify-content: center; }
-        .coupon-input { background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: white; padding: 10px 12px; border-radius: 8px; outline: none; width: 65%; font-size: 0.95rem; text-transform: uppercase; }
-        .coupon-input:focus { border-color: #a78bfa; }
-        .btn-aplicar { background: rgba(167, 139, 250, 0.1); color: #a78bfa; border: 1px solid #a78bfa; padding: 10px 15px; border-radius: 8px; cursor: pointer; font-weight: 600; transition: 0.3s; font-size: 0.95rem;}
-        .btn-aplicar:hover { background: #a78bfa; color: black; }
-        .coupon-msg { text-align: center; font-size: 0.9rem; margin-bottom: 15px; font-weight: 600; min-height: 20px; }
+        .coupon-input { background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); color: white; padding: 12px 15px; border-radius: 10px; outline: none; width: 65%; font-size: 0.9rem; text-transform: uppercase; transition: 0.3s; font-family: var(--font-base);}
+        .coupon-input:focus { border-color: #a78bfa; box-shadow: 0 0 10px rgba(167,139,250,0.2);}
+        .btn-aplicar { background: rgba(167, 139, 250, 0.1); color: #c4b5fd; border: 1px solid rgba(167,139,250,0.3); padding: 10px 18px; border-radius: 10px; cursor: pointer; font-weight: 600; transition: 0.3s; font-size: 0.9rem;}
+        .btn-aplicar:hover { background: rgba(167,139,250,0.2); border-color: #a78bfa; color: white; }
+        .coupon-msg { text-align: center; font-size: 0.85rem; margin-bottom: 15px; font-weight: 400; min-height: 20px; }
 
-        /* MODAL DE PRECIOS EN VIVO (DISEÑO BOTONES / TARJETAS) */
+        /* MODALES (VENTANAS EMERGENTES) - GLASSMORPHISM */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85); backdrop-filter: blur(5px);
+            background: rgba(0,0,0,0.7); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
             display: none; justify-content: center; align-items: center;
-            z-index: 999999; opacity: 0; transition: opacity 0.3s ease; padding: 20px;
+            z-index: 999999; opacity: 0; transition: opacity 0.4s ease; padding: 20px;
         }
         .modal-overlay.active { display: flex; opacity: 1; }
         .modal-content {
-            background: #09090b; border: 1px solid var(--border);
-            width: 100%; max-width: 700px; max-height: 85vh; border-radius: 16px;
+            background: rgba(15, 15, 15, 0.95); border: 1px solid rgba(255,255,255,0.1);
+            width: 100%; max-width: 700px; max-height: 85vh; border-radius: 20px;
             display: flex; flex-direction: column; overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.7);
         }
-        .modal-header {
-            padding: 18px 20px; border-bottom: 1px solid var(--border);
-            display: flex; justify-content: space-between; align-items: center;
-            background: #000;
-        }
-        .modal-header h3 { margin: 0; color: white; font-size: 1.15rem; }
-        .btn-close {
-            background: transparent; border: none; color: var(--text-muted);
-            font-size: 1.8rem; cursor: pointer; transition: 0.3s; line-height: 1;
-        }
-        .btn-close:hover { color: #ef4444; }
-        .modal-body { padding: 0; overflow-y: auto; background: var(--bg); }
-        .loading-text { text-align: center; color: var(--primary); font-weight: bold; padding: 40px 20px; }
+        .modal-header { padding: 20px 25px; border-bottom: 1px solid var(--border-glass); display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.4); }
+        .modal-header h3 { margin: 0; color: white; font-family: var(--font-lujo); font-size: 1.3rem; letter-spacing: 0.5px;}
+        .btn-close { background: transparent; border: none; color: var(--text-muted); font-size: 2rem; cursor: pointer; transition: 0.3s; line-height: 1; font-weight: 300;}
+        .btn-close:hover { color: white; transform: rotate(90deg);}
+        .modal-body { padding: 0; overflow-y: auto; background: transparent; position: relative;}
+        .loading-text { text-align: center; color: var(--text-muted); font-weight: 400; padding: 40px 20px; }
         
-        .categoria-titulo {
-            background: rgba(59, 130, 246, 0.1);
-            color: var(--primary);
-            padding: 12px 15px;
-            font-weight: 800;
-            margin-top: 25px;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            border-left: 4px solid var(--primary);
-            text-transform: uppercase;
-        }
+        /* DISEÑO DE LISTA DE PRECIOS */
+        .categoria-titulo { font-family: var(--font-lujo); background: rgba(255,255,255,0.02); color: white; padding: 15px 20px; font-weight: 600; margin-top: 30px; font-size: 1.1rem; border-bottom: 1px solid var(--border-glass); letter-spacing: 1px;}
         .categoria-titulo:first-child { margin-top: 0; }
+        .servicio-item { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; border-bottom: 1px solid rgba(255,255,255,0.03); transition: background 0.2s;}
+        .servicio-item:hover { background: rgba(255,255,255,0.02);}
+        .servicio-nombre { color: #d4d4d8; font-size: 0.95rem; font-weight: 300; padding-right: 15px; }
+        .servicio-precio { color: var(--green); font-weight: 600; font-size: 0.95rem; white-space: nowrap; }
+
+        /* CARRUSEL HORIZONTAL PARA MÉTODOS */
+        .carousel-wrapper { position: relative; width: 100%; background: #000; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 20px 0; border-bottom: 1px solid var(--border-glass);}
+        .carousel-track { display: flex; transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1); width: 100%; }
+        .carousel-slide { min-width: 100%; display: flex; justify-content: center; align-items: center; }
+        .carousel-slide img { max-width: 85%; max-height: 50vh; object-fit: contain; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 10px 30px rgba(0,0,0,0.5);}
         
-        .servicio-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            padding: 12px 15px;
-            margin-top: 10px;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-        }
-        .servicio-item:hover {
-            border-color: rgba(59, 130, 246, 0.5);
-            box-shadow: 0 5px 15px rgba(59,130,246,0.1);
-            transform: translateY(-2px);
-        }
-        .servicio-nombre {
-            color: #d4d4d8;
-            font-size: 0.95rem;
-            font-weight: 600;
-            line-height: 1.4;
-            padding-right: 15px;
-        }
-        .servicio-precio {
-            background: rgba(34, 197, 94, 0.1);
-            color: var(--green);
-            padding: 6px 12px;
-            border-radius: 8px;
-            font-weight: 800;
-            font-size: 0.95rem;
-            white-space: nowrap;
-            border: 1px solid rgba(34, 197, 94, 0.2);
-        }
+        .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); width: 45px; height: 45px; border-radius: 50%; font-size: 1.2rem; cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center; transition: 0.3s; backdrop-filter: blur(4px);}
+        .carousel-btn:hover { background: rgba(255,255,255,0.2); transform: translateY(-50%) scale(1.1);}
+        .carousel-btn.left { left: 15px; }
+        .carousel-btn.right { right: 15px; }
+
+        .metodos-info { padding: 30px 25px; background: transparent; }
+        .metodos-info h4 { font-family: var(--font-lujo); color: #d8b4fe; margin-bottom: 12px; font-size: 1.2rem; font-weight: 600;}
+        .metodos-info p { color: #a1a1aa; font-size: 0.95rem; line-height: 1.6; margin-bottom: 25px; font-weight: 300;}
+        
+        /* CAJA EDITABLE PARA TU LISTA DE MÉTODOS */
+        .lista-metodos-caja { background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05); padding: 20px; border-radius: 12px; }
+        .lista-metodos-caja ul { list-style: none; padding: 0; margin: 0; }
+        .lista-metodos-caja ul li { color: #d4d4d8; font-size: 0.9rem; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.03); display: flex; gap: 10px; font-weight: 300;}
+        .lista-metodos-caja ul li:last-child { border-bottom: none; padding-bottom: 0;}
     </style>
 </head>
 <body>
@@ -309,221 +285,188 @@
     <header>
         <div class="logo">NEXO<span>STREAM</span></div>
         <nav>
-            <a href="https://whatsapp.com/channel/0029VbDpTBHGufJ5FYQ7qC1I" class="btn-puente">
-                🕷️ Referencias
-            </a>
-            <a href="https://wa.me/593991296279" class="btn-nav-outline">
-                💬 WhatsApp
-            </a>
+            <a href="https://whatsapp.com/channel/0029VbDpTBHGufJ5FYQ7qC1I" class="btn-puente" target="_blank">🕷️ Referencias</a>
+            <a href="https://wa.me/593991296279" class="btn-nav-outline" target="_blank">💬 WhatsApp</a>
         </nav>
     </header>
 
     <section class="hero">
-        <h1>
-            Inicia tu negocio de<br>
-            <span>Streaming Hoy.</span>
-        </h1>
-        <p>
-            Herramientas digitales premium para consumir, revender y generar ingresos por internet.
-        </p>
-        
-        <div class="hero-botones">
-            <a href="#paquetes" class="btn-comprar solid" style="width: auto; padding: 12px 25px;" onclick="document.getElementById('paquetes').open = true;">Ver Paquetes de Inversión</a>
-        </div>
-
+        <h1>Inicia tu negocio de<br><span>Streaming Hoy.</span></h1>
+        <p>Herramientas digitales premium para consumir, revender y generar ingresos por internet.</p>
         <div class="hero-tags">
-            <span>🎬 Streaming</span>
-            <span>🤖 IA</span>
-            <span>🎨 Canva</span>
-            <span>📚 Métodos</span>
-            <span>💼 Panel Mayorista</span>
+            <span>🎬 Streaming</span><span>🤖 Inteligencia Artificial</span><span>🎨 Diseño</span><span>📚 Métodos VIP</span>
         </div>
     </section>
 
     <div class="productos-container">
 
         <!-- 1. STREAMING MAYORISTA -->
-        <details id="paquetes" class="producto-details" style="--box-color: #3b82f6; --box-color-shadow: rgba(59,130,246,0.2);">
+        <details id="paquetes" class="producto-details" style="--box-color: rgba(59, 130, 246, 0.4); --box-color-shadow: rgba(59,130,246,0.2);">
             <summary class="producto-summary">
                 <div class="summary-info">
-                    <div class="summary-img" style="font-size: 2rem;">💰</div>
+                    <div class="summary-img" style="font-size: 2rem;">💎</div>
                     <div class="summary-title">
-                        <h3>Panel Mayorista de Streaming</h3>
-                        <p>Compra servicios a precio de fábrica y véndelos a tus propios clientes.</p>
+                        <h3>Panel Mayorista Streaming</h3>
+                        <p>Servicios de streaming a precio de proveedor</p>
                     </div>
                 </div>
-                <span class="toggle-btn">Ver Packs ↓</span>
+                <span class="toggle-btn">Ver Inversión</span>
             </summary>
             
             <div class="producto-content">
-                <div class="contexto-box">
-                    <h4>💡 ¿De qué se trata este modelo de negocio?</h4>
-                    <p class="contexto-p">
-                        Genera ingresos vendiendo servicios como Netflix, Disney+, Spotify y más de 100 plataformas. 
-                        <strong>Funciona para cualquier país, las cuentas son sin geo-bloqueo (Sin GEO).</strong>
-                        Tú accedes a precios súper bajos y decides a qué precio venderlos al público.
-                    </p>
-                    <p class="contexto-p" style="font-weight: 600; color: white; margin-bottom: 5px;">
-                        No necesitas experiencia previa. Te capacitamos desde cero.
-                    </p>
-
-                    <a href="https://youtu.be/zbMpuR7-Fec" target="_blank" class="btn-youtube">
-                        ▶️ Ver explicación del panel
-                    </a>
-
-                    <details class="beneficios-accordion">
-                        <summary>👇 Ver los pilares del panel</summary>
-                        <ul class="puntos-clave">
-                            <li><span>✓</span> <div style="line-height: 1.5;"><strong style="color: white;">Recargas Automáticas:</strong><br>Haz tus recargas en USDT mediante Binance (desde $1.5), y tú vende en tu moneda local.</div></li>
-                            <li><span>✓</span> <div style="line-height: 1.5;"><strong style="color: white;">Respaldo Total:</strong><br>Cada servicio cuenta con garantía, soporte técnico y reembolsos al panel.</div></li>
+                
+                <!-- ACORDEÓN QUE AHORRA ESPACIO -->
+                <details class="beneficios-accordion" style="margin-top: 0;">
+                    <summary style="font-size: 1rem; font-family: var(--font-lujo); letter-spacing: 0.5px;">💡 ¿Qué es el Panel y cómo funciona?</summary>
+                    <div class="acordeon-contenido">
+                        <p style="margin-bottom: 15px;">Genera ingresos vendiendo servicios como Netflix, Disney+, Spotify y más de 100 plataformas. Funciona las cuentas para vender en para cualquier país. Tú accedes a precios súper bajos y decides a qué precio venderlos al público.</p>
+                        <p style="font-weight: 400; color: white; margin-bottom: 20px;">No necesitas experiencia previa. Es un panel automatizado.</p>
+                        <h4 style="color:var(--primary); font-size:0.9rem; margin-bottom:12px; text-transform: uppercase; letter-spacing: 1px;">Pilares del panel:</h4>
+                        <ul>
+                            <li><span style="color: var(--primary);">✓</span> <div><strong style="color: white; font-weight: 400;">Recargas Automáticas:</strong> Haz tus recargas en USDT mediante Binance (desde $1.5), o de tu billetera cripto y tú vende en tu moneda local.</div></li>
+                            <li><span style="color: var(--primary);">✓</span> <div><strong style="color: white; font-weight: 400;">Respaldo Total del panel:</strong> Cada servicio cuenta con garantía, soporte técnico y reembolsos al panel. significa que no tendras problemas con las cuentas que adquieras en el panel</div></li>
                         </ul>
-                    </details>
-                </div>
+                    </div>
+                </details>
 
-                <!-- BOTÓN MODAL Y PANEL 2 AGREGADOS AQUÍ -->
+                <a href="https://youtu.be/zbMpuR7-Fec" target="_blank" class="btn-youtube" style="margin-top:0;">▶️ Ver explicación del negocio</a>
+
                 <div style="display: flex; flex-direction: column; gap: 10px; max-width: 800px; margin: 25px auto 10px auto;">
-                    <button type="button" class="btn-excel" onclick="abrirModalPrecios()" style="margin: 0; width: 100%; cursor: pointer;">
-                        📊 Ver Precios de Fábrica (Panel 1 - En vivo)
+                    <button type="button" class="btn-excel" onclick="abrirModalPrecios()" style="margin: 0;">
+                        📊 Ver Precios de Fábrica (En vivo)
                     </button>
-                    
-                    <details style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 12px; padding: 15px;">
-                        <summary style="color: #d4d4d8; font-weight: 600; cursor: pointer; list-style: none; text-align: center;">
-                            🔗 Acceso Alternativo (Panel 2 - Referidos) ▼
-                        </summary>
-                        <div style="margin-top: 15px; font-size: 0.9rem; color: #a1a1aa; text-align: center;">
-                            <p style="margin-bottom: 10px;">Si prefieres usar nuestro segundo proveedor, regístrate con el siguiente código para obtener beneficios:</p>
-                            <strong style="color: var(--primary); font-size: 1.1rem; background: #000; padding: 5px 15px; border-radius: 8px; border: 1px dashed var(--primary);">TU_CÓDIGO_AQUÍ</strong>
-                            <a href="https://link-de-tu-panel-2.com" target="_blank" style="display: block; margin-top: 12px; color: white; text-decoration: underline;">Ir a registrarse al Panel 2</a>
-                        </div>
-                    </details>
                 </div>
-                <!-- FIN BOTÓN MODAL Y PANEL 2 -->
 
                 <div class="aviso-inversion">
-                    <h4 class="aviso-title">⚠️ ATENCIÓN</h4>
-                    <p style="margin: 0;">
-                        Para ingresar a trabajar con nosotros y acceder a los precios de fábrica, 
-                        <strong>el panel se activa con un único pago</strong>. No hay mensualidades obligatorias.
-                    </p>
+                    <h4 class="aviso-title">ATENCIÓN</h4>
+                    <p style="margin: 0;">Para ingresar al panel streaming y acceder a los precios de fábrica, <strong>el panel se activa con un único pago</strong>. No hay mensualidades obligatorias.</p>
                 </div>
 
                 <div class="precios-grid">
                     <!-- PACK ESTÁNDAR -->
-                    <div class="pack-card" style="border-color: #94a3b8;">
+                    <div class="pack-card" style="border-color: rgba(255,255,255,0.1);">
                         <h3>Pack Estándar</h3>
                         <div class="precio">$7.99 <span>USD</span></div>
                         <details class="pack-details">
-                            <summary class="pack-summary">👇 Ver beneficios</summary>
+                            <summary class="pack-summary">Ver beneficios incluidos</summary>
                             <div class="pack-content">
                                 <ul class="lista-beneficios">
-                                    <li><span>✅</span> <div>1 Activación de Panel Distribuidor principal.</div></li>
-                                    <li><span>✅</span> <div><strong>Poder de Afiliación:</strong> Afilia a otras personas y gana por acceso.</div></li>
-                                    <li><span>✅</span> <div>Acceso a Panel de Seguidores y Redes Sociales.</div></li>
-                                    <li><span>✅</span> <div>Grupo de publicidad streaming.</div></li>
-                                    <li><span>✅</span> <div>Bots en Telegram.</div></li>
-                                    <li><span>✅</span> <div>✅ NEXO — Panel de Gestión para Distribuidores
- :Administra clientes, cuentas, perfiles, ventas, vencimientos, renovaciones y finanzas desde PC o celular.
-</div></li>
-                                    <li><span>✅</span> <div>✅ Catálogo Web Profesional:
-   tu propio catálogo público con nombre de negocio, logo, productos, precios, disponibilidad y contacto por WhatsApp.</div></li>
-                                    <li><span>✅</span> <div>Capacitación paso a paso.</div></li>
-                                    <li><span>✅</span> <div>APK Xuper Hidra.</div></li>
-                                    <li style="margin-top:10px; border-top: 1px solid var(--border); padding-top:15px;">
-                                        <span>🎁</span> <div><strong style="color: white;">REGALO:</strong> Acceso a Canva Pro Edu.</div>
+                                    <li><span style="color: var(--primary);">✦</span> <div>Activación de Panel Streaming.</div></li>
+                                    <li><span style="color: var(--primary);">✦</span> <div><strong>Poder de Afiliación:</strong> Vende el acceso al panel.</div></li>
+                                    <li><span style="color: var(--primary);">✦</span> <div>Acceso a Panel de Seguidores y Redes Sociales.</div></li>
+                                    <li><span style="color: var(--primary);">✦</span> <div>Publicidad streaming pre-diseñada.</div></li>
+                                    <li><span style="color: var(--primary);">✦</span> <div>Acceso a Canva Pro Edu.</div></li>
+                                    <li><span style="color: var(--primary);">✦</span> <div>Panel de Gestión: Administra clientes, cuentas, ventas y vencimientos desde PC o celular.</div></li>
+                                    <li><span style="color: var(--primary);">✦</span> <div>Catálogo Web Profesional: tu propio catálogo con nombre, logo, precios y contacto por WhatsApp.</div></li>
+                                    <li><span style="color: var(--primary);">✦</span> <div>Capacitación paso a paso.</div></li>
+                                    <li><span style="color: var(--primary);">✦</span> <div>APK Xuper Hidra.</div></li>
+                                    <li style="margin-top:15px; border-top: 1px solid rgba(255,255,255,0.05); padding-top:15px;">
+                                        <span>🎁</span> <div><strong style="color: white; font-weight: 400;">REGALO:</strong> Bots en Telegram.</div>
                                     </li>
                                 </ul>
                             </div>
                         </details>
-                        <a href="https://wa.me/593991296279?text=Hola,%20quiero%20el%20Pack%20Estándar%20de%20$7.99" class="btn-comprar outline">
-                            Activar Estándar
-                        </a>
+                        <a href="https://wa.me/593991296279?text=Hola,%20quiero%20el%20Pack%20Estándar%20de%20$7.99" class="btn-comprar outline" target="_blank">Activar Estándar</a>
                     </div>
 
                     <!-- PACK PREMIUM VIP -->
                     <div class="pack-card vip">
-                        <div class="badge badge-oro">MÁS RENTABLE ⭐</div>
+                        <div class="badge badge-oro">MÁS RENTABLE</div>
                         <h3 style="color: var(--accent);">Pack Premium VIP</h3>
                         <div class="precio" style="color: var(--accent);">$17.00 <span>USD</span></div>
-                        <details class="pack-details">
-                            <summary class="pack-summary vip-text">👇 Ver todos los beneficios VIP</summary>
+                        <details class="pack-details" style="border-color: rgba(245, 158, 11, 0.2);">
+                            <summary class="pack-summary vip-text">Ver todos los beneficios VIP</summary>
                             <div class="pack-content">
                                 <ul class="lista-beneficios">
-                                    <li><span>👑</span> <div><strong>INCLUYE TODO EL PACK ESTÁNDAR +</strong></div></li>
-                                    <li><span>👑</span> <div><strong>2do Panel Streaming</strong> para más stock.</div></li>
-                                    <li><span>👑</span> <div><strong>Mega Grupo de Métodos</strong> para aprender a sacar cuentas.</div></li>
-                                    <li><span>👑</span> <div><strong>Métodos de Videojuegos</strong>.</div></li>
-                                    <li><span>👑</span> <div>Panel / Bot de <strong>Números Virtuales</strong>.</div></li>
-                                    <li><span>👑</span> <div>Grupo exclusivo de <strong>APKs VIP</strong>.</div></li>
-                                    <li><span>👑</span> <div><strong>Curso de Facebook Ads</strong> enfocado en vender Streaming.</div></li>
+                                    <li><span style="color: var(--accent);">👑</span> <div><strong style="color: white; font-weight: 400;">INCLUYE TODO EL PACK ESTÁNDAR +</strong></div></li>
+                                    <li><span style="color: var(--accent);">👑</span> <div><strong>2do Panel Streaming</strong> para más stock.</div></li>
+                                    <li><span style="color: var(--accent);">👑</span> <div><strong>Mega Grupo de Métodos</strong> para aprender a sacar cuentas.</div></li>
+                                    <li><span style="color: var(--accent);">👑</span> <div><strong>Métodos de Videojuegos</strong>.</div></li>
+                                    <li><span style="color: var(--accent);">👑</span> <div>Panel / Bot de <strong>Números Virtuales</strong>.</div></li>
+                                    <li><span style="color: var(--accent);">👑</span> <div>Grupo exclusivo de <strong>APKs VIP</strong>.</div></li>
+                                    <li><span style="color: var(--accent);">👑</span> <div><strong>Curso de Facebook Ads</strong> enfocado en vender Streaming.</div></li>
                                 </ul>
                             </div>
                         </details>
-                        <a href="https://wa.me/593991296279?text=Hola,%20quiero%20el%20Pack%20Premium%20VIP%20de%20$17.00" class="btn-comprar oro">
-                            Adquirir Premium VIP
-                        </a>
+                        <a href="https://wa.me/593991296279?text=Hola,%20quiero%20el%20Pack%20Premium%20VIP%20de%20$17.00" class="btn-comprar oro" target="_blank">Adquirir Premium VIP</a>
                     </div>
+
+                    <!-- [INICIO] PAQUETE EXTRA 1 (ESTADO: MODO-OFF) -->
+                    <div class="pack-card MODO-OFF" style="border-color: rgba(239, 68, 68, 0.3); display: none;">
+                        <h3 style="color: #fca5a5;">Pack Diamante</h3>
+                        <div class="precio" style="color: white;">$25.00 <span>USD</span></div>
+                        <details class="pack-details" style="border-color: rgba(239, 68, 68, 0.2);">
+                            <summary class="pack-summary" style="color: #fca5a5;">Ver beneficios Diamante</summary>
+                            <div class="pack-content">
+                                <ul class="lista-beneficios">
+                                    <li><span style="color: #fca5a5;">💎</span> <div>Beneficio exclusivo 1.</div></li>
+                                    <li><span style="color: #fca5a5;">💎</span> <div>Beneficio exclusivo 2.</div></li>
+                                </ul>
+                            </div>
+                        </details>
+                        <a href="#" class="btn-comprar outline" style="border-color: rgba(239, 68, 68, 0.4); color: #fca5a5;">Activar Diamante</a>
+                    </div>
+                    <!-- [FIN] PAQUETE EXTRA 1 -->
+
                 </div>
             </div>
         </details>
 
         <!-- 2. GRUPO DE MÉTODOS -->
-        <details class="producto-details" style="--box-color: #a78bfa; --box-color-shadow: rgba(167,139,250,0.2);">
-            <summary class="producto-summary" style="background: rgba(139, 92, 246, 0.05);">
+        <details class="producto-details" style="--box-color: rgba(167, 139, 250, 0.4); --box-color-shadow: rgba(167,139,250,0.15);">
+            <summary class="producto-summary">
                 <div class="summary-info">
                     <div class="summary-img" style="font-size: 2rem;">🔐</div>
                     <div class="summary-title">
-                        <h3 style="color: #a78bfa;">Grupo de Métodos Streaming</h3>
+                        <h3 style="color: #d8b4fe;">Grupo de Métodos Streaming</h3>
                         <p>Aprende a crear cuentas digitales desde cero.</p>
                     </div>
                 </div>
-                <span class="toggle-btn" style="color: #a78bfa; background: rgba(139, 92, 246, 0.1);">Ver Acceso ↓</span>
+                <span class="toggle-btn" style="color: #d8b4fe;">Ver Acceso</span>
             </summary>
             
             <div class="producto-content">
-                <p class="b2b-desc">
-                    Accede a un grupo privado donde encontrarás una amplia colección de métodos y recursos digitales, organizados por categorías y actualizados constantemente.
-                </p>
+                <p class="b2b-desc">Accede a un grupo VIP de métodos streaming, para que aprendas a sacar Netflix, HBO Max, Disney, Canva, etc.</p>
                 
                 <div class="precios-grid" style="grid-template-columns: 1fr; max-width: 500px; margin: 0 auto;">
-                    <div class="item-card" style="border-color: #a78bfa;">
+                    <div class="item-card" style="border-color: rgba(167, 139, 250, 0.2);">
                         <div class="item-image">
-                            <img src="https://i.ibb.co/MxdVTVKM/image.png" style="filter: hue-rotate(60deg);" alt="Métodos VIP">
+                            <img src="https://i.ibb.co/MxdVTVKM/image.png" style="filter: hue-rotate(60deg) saturate(1.5);" alt="Métodos VIP">
                         </div>
                         <div class="item-body">
-                            <div class="item-title" style="color: #a78bfa;">Acceso al Grupo VIP</div>
+                            <div class="item-title" style="color: #d8b4fe;">Acceso al Grupo VIP</div>
                             
-                            <!-- SECCIÓN DE PRECIOS ARREGLADA -->
                             <div class="item-price" id="price-boveda">$19.99 <span>USD</span></div>
                             <div class="item-price" id="price-boveda-discount" style="display:none; flex-direction:column; align-items:center; gap:5px;">
-                                <span style="text-decoration: line-through; font-size: 1rem; color: var(--text-muted);">$19.99 USD</span>
-                                $15.00 <span style="color: #a78bfa; font-weight: bold; font-size: 0.85rem;">CUPÓN APLICADO ✅</span>
+                                <span style="text-decoration: line-through; font-size: 1rem; color: var(--text-muted); font-weight: 400;">$19.99 USD</span>
+                                <span id="price-boveda-new-val">$15.00</span> <span style="color: #d8b4fe; font-weight: 600; font-size: 0.85rem; letter-spacing: normal;">CUPÓN APLICADO ✅</span>
                             </div>
 
-                            <div style="display: flex; justify-content: center; width: 100%;">
-                                <a href="https://youtu.be/AjMGMp7Pvmc" target="_blank" class="btn-youtube">▶️ Ver explicación del grupo</a>
-                            </div>
+                            <button type="button" class="btn-capturas" onclick="abrirModalMetodos()">📸 Ver interior del grupo</button>
+                            
+                            <a href="https://youtu.be/AjMGMp7Pvmc" target="_blank" class="btn-youtube" style="margin-top:15px;">▶️ Explicación en video</a>
 
                             <div class="coupon-box" id="coupon-container">
-                                <input type="text" id="coupon-input" class="coupon-input" placeholder="¿Tienes un cupón?">
+                                <input type="text" id="coupon-input" class="coupon-input" placeholder="¿Código de descuento?">
                                 <button type="button" class="btn-aplicar" onclick="aplicarCupon()">Aplicar</button>
                             </div>
                             <p id="coupon-msg" class="coupon-msg"></p>
 
-                            <ul class="lista-beneficios" style="margin-bottom: 25px;">
-                                <li><span>✅</span> <div><strong>ACCESO PERMANENTE</strong> al contenido.</div></li>
-                                <li><span>✅</span> <div><strong>CLASES VÍA MEET</strong> para resolución de dudas.</div></li>
-                                <li><span>✅</span> <div><strong>ACTUALIZACIONES</strong> de métodos constantemente.</div></li>
-                                <li><span>✅</span> <div><strong>VIDEOS TUTORIALES</strong> explicados paso a paso.</div></li>
-                                <li><span>✅</span> <div><strong>CHAT GLOBAL</strong> exclusivo para alumnos.</div></li>
-                                <li style="background: rgba(245, 158, 11, 0.1); border: 1px dashed var(--accent); padding: 12px; border-radius: 8px; margin-top: 12px; align-items: center;">
-                                    <span>🎁</span> <div><strong style="color: var(--accent);">BONO:</strong> <span style="color: white;">Lista VIP de Proveedores y Bots Telegram.</span></div>
-                                </li>
-                            </ul>
+                            <!-- ACORDEÓN DE BENEFICIOS -->
+                            <details class="beneficios-accordion" style="margin-top:0; border-color:rgba(167,139,250,0.2); background: rgba(0,0,0,0.4);">
+                                <summary style="color:#d4d4d8;">Ver contenido incluido</summary>
+                                <div class="acordeon-contenido" style="padding-top:0;">
+                                    <ul style="margin:0;">
+                                        <li><span style="color: #d8b4fe;">✦</span> <div><strong>ACCESO PERMANENTE</strong> al contenido.</div></li>
+                                        <li><span style="color: #d8b4fe;">✦</span> <div><strong>CLASES DESDE LO BÁSICO</strong></div></li>
+                                        <li><span style="color: #d8b4fe;">✦</span> <div><strong>ACTUALIZACIONES</strong> de métodos. </div></li>
+                                        <li><span style="color: #d8b4fe;">✦</span> <div><strong>VIDEOS TUTORIALES</strong> paso a paso.</div></li>
+                                        <li><span style="color: #d8b4fe;">✦</span> <div><strong>CHAT GLOBAL</strong> exclusivo compra/venta.</div></li>
+                                    </ul>
+                                </div>
+                            </details>
 
-                            <a href="https://sites.google.com/view/nexo-metodos/inicio" target="_blank" class="btn-comprar outline" style="border-color: #a78bfa; color: #a78bfa; margin-bottom: 15px;">📄 Ver Lista de Métodos</a>
-                            
-                            <!-- ESTE ES EL BOTÓN QUE CAMBIA SU LINK CUANDO SE APLICA EL CUPÓN -->
-                            <a href="https://wa.me/593991296279?text=Hola,%20quiero%20el%20acceso%20al%20Grupo%20VIP%20de%20Métodos%20por%20$19.99" id="btn-comprar-boveda" class="btn-comprar solid" style="background: #a78bfa; color: black;">COMPRAR ACCESO</a>
+                            <a href="https://wa.me/593991296279?text=Hola,%20quiero%20el%20acceso%20al%20Grupo%20VIP%20de%20Métodos%20por%20$19.99" id="btn-comprar-boveda" class="btn-comprar solid" style="background: linear-gradient(135deg, #a78bfa, #8b5cf6); color: white; box-shadow: 0 4px 15px rgba(139,92,246,0.3);" target="_blank">INGRESAR AL GRUPO</a>
                         </div>
                     </div>
                 </div>
@@ -531,70 +474,103 @@
         </details>
 
         <!-- 3. COMBOS ESPECIALES -->
-        <details class="producto-details" style="--box-color: #22c55e; --box-color-shadow: rgba(34,197,94,0.2);">
-            <summary class="producto-summary" style="background: linear-gradient(90deg, rgba(22, 163, 74, 0.15) 0%, transparent 100%);">
+        <details class="producto-details" style="--box-color: rgba(16, 185, 129, 0.4); --box-color-shadow: rgba(16,185,129,0.15);">
+            <summary class="producto-summary">
                 <div class="summary-info">
                     <div class="summary-img" style="font-size: 2rem;">🎁</div>
                     <div class="summary-title">
-                        <h3 style="color: var(--green);">Combos y Promociones Especiales</h3>
+                        <h3 style="color: #6ee7b7;">Combos y Promociones</h3>
                         <p>Herramientas empaquetadas al mejor precio.</p>
                     </div>
                 </div>
-                <span class="toggle-btn" style="color: var(--green); background: rgba(34, 197, 94, 0.1);">Ver Oferta ↓</span>
+                <span class="toggle-btn" style="color: #6ee7b7;">Ver Ofertas</span>
             </summary>
             
             <div class="producto-content">
                 <div class="precios-grid" style="grid-template-columns: 1fr; max-width: 500px; margin: 0 auto;">
-                    <div class="item-card" style="border-color: var(--green);">
-                        <div class="item-image"><img src="https://i.ibb.co/FbHhGF18/photo-2026-08-18-22-43-05.jpg" alt="Combo Poder Digital"></div>
+                    
+                    <!-- [INICIO] COMBO 1 (ESTADO: MODO-ON) -->
+                    <div class="item-card MODO-ON" style="border-color: rgba(16, 185, 129, 0.2);">
                         <div class="item-body">
-                            <div class="item-title" style="color: var(--green);">Paquete (Poder Digital)</div>
-                            <div class="item-price" style="color: var(--text);">$6.99 <span style="color: var(--green); font-weight: bold;">PAGO ÚNICO</span></div>
-                            <p class="item-desc" style="color: #fff; font-weight: 600; margin-bottom: 20px;">¡Asegura 18 Meses de vigencia blindada sin renovaciones forzosas!</p>
+                            <div class="item-title" style="color: #6ee7b7; font-size: 1.4rem;">Pack 3 Paneles Streaming</div>
+                            <div class="item-price" style="color: white;">$9.00 <span style="color: #6ee7b7; font-weight: 600;">PAGO ÚNICO</span></div>
                             
-                            <ul class="lista-beneficios" style="margin-bottom: 25px;">
-                                <li><span>✨</span> <div><strong>Google Drive 5TB</strong> (Almacenamiento masivo)</div></li>
-                                <li><span>✨</span> <div><strong>Google Fotos y Gmail</strong> (Comunicación segura)</div></li>
-                                <li><span>✨</span> <div><strong>Canva PRO</strong> (Diseño ilimitado)</div></li>
-                                <li><span>✨</span> <div><strong>Gemini PRO Cuenta completa</strong> (Inteligencia Artificial)</div></li>
-                            </ul>
+                            <details class="beneficios-accordion" style="margin: 15px 0; border-color: rgba(16, 185, 129, 0.2); background: rgba(0,0,0,0.4);">
+                                <summary style="color:#d4d4d8;">Ver detalles del combo</summary>
+                                <div class="acordeon-contenido" style="padding-top:0;">
+                                    <p style="margin-bottom: 20px; font-style: italic;">SON 3 PANELES EN TOTAL, similares precios a la lista, los 3 son probados y verificados que cuentan con su respectiva garantía, soporte y reembolso, combo enfocado en más stock.</p>
+                                    <p style="margin-bottom: 12px; color: #6ee7b7; font-weight: 400; font-family: var(--font-lujo);">Beneficios extra incluidos:</p>
+                                    <ul style="margin:0;">
+                                        <li><span style="color: #6ee7b7;">✓</span> <div>PUBLICIDAD STREAMING.</div></li>
+                                        <li><span style="color: #6ee7b7;">✓</span> <div>PROPIO CATÁLOGO WEB.</div></li>
+                                        <li><span style="color: #6ee7b7;">✓</span> <div>GESTOR DE CLIENTES.</div></li>
+                                        <li><span style="color: #6ee7b7;">✓</span> <div>PANEL DE SEGUIDORES.</div></li>
+                                        <li><span style="color: #6ee7b7;">✓</span> <div>BOTS DE TELEGRAM.</div></li>
+                                    </ul>
+                                </div>
+                            </details>
                             
-                            <a href="https://wa.me/593991296279?text=Hola,%20quiero%20comprar%20el%20Paquete%20Poder%20Digital%20por%20$6.99" class="btn-comprar solid" style="background: var(--green); color: black;">Ejecutar Compra Segura</a>
+                            <a href="https://wa.me/593991296279?text=Hola,%20quiero%20comprar%20el%20Pack%203%20Paneles%20por%20$9.00" class="btn-comprar solid" style="background: linear-gradient(135deg, #10b981, #059669); color: white; box-shadow: 0 4px 15px rgba(16,185,129,0.3);" target="_blank">Adquirir Combo</a>
                         </div>
                     </div>
+                    <!-- [FIN] COMBO 1 -->
+
+                    <!-- [INICIO] COMBO 2 (ESTADO: MODO-OFF) -->
+                    <div class="item-card MODO-OFF" style="border-color: rgba(245, 158, 11, 0.3); display: none;">
+                        <div class="item-body">
+                            <div class="item-title" style="color: #fcd34d;">Nuevo Combo Oculto</div>
+                            <div class="item-price" style="color: white;">$15.00 <span style="color: #fcd34d; font-weight: 600;">PAGO ÚNICO</span></div>
+                            
+                            <details class="beneficios-accordion" style="margin: 15px 0; border-color: rgba(245,158,11,0.2); background: rgba(0,0,0,0.4);">
+                                <summary style="color:#d4d4d8;">Ver detalles del combo</summary>
+                                <div class="acordeon-contenido" style="padding-top:0;">
+                                    <p style="margin-bottom: 20px; font-style: italic;">Descripción del nuevo combo oculto.</p>
+                                    <p style="margin-bottom: 12px; color: #fcd34d; font-weight: 400; font-family: var(--font-lujo);">Beneficios extra incluidos:</p>
+                                    <ul style="margin:0;">
+                                        <li><span style="color: #fcd34d;">✓</span> <div>Beneficio oculto 1.</div></li>
+                                        <li><span style="color: #fcd34d;">✓</span> <div>Beneficio oculto 2.</div></li>
+                                    </ul>
+                                </div>
+                            </details>
+                            
+                            <a href="#" class="btn-comprar solid" style="background: linear-gradient(135deg, #f59e0b, #d97706); color: black;">Adquirir Combo</a>
+                        </div>
+                    </div>
+                    <!-- [FIN] COMBO 2 -->
+
                 </div>
             </div>
         </details>
 
         <!-- 4. BOTS TELEGRAM -->
-        <details class="producto-details" style="--box-color: #0ea5e9; --box-color-shadow: rgba(14,165,233,0.2);">
+        <details class="producto-details" style="--box-color: rgba(14, 165, 233, 0.4); --box-color-shadow: rgba(14,165,233,0.15);">
             <summary class="producto-summary">
                 <div class="summary-info">
-                    <div class="summary-img"><img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Bots"></div>
+                    <div class="summary-img"><img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Bots" style="width: 60%; height: 60%;"></div>
                     <div class="summary-title">
-                        <h3>Proveedores & Bots Telegram </h3>
-                        <p>Automatiza compras con proveedores ocultos a precio de fábrica.</p>
+                        <h3 style="color: #7dd3fc;">Proveedores & Bots</h3>
+                        <p>Automatiza compras con proveedores ocultos.</p>
                     </div>
                 </div>
-                <span class="toggle-btn">Ver Info ↓</span>
+                <span class="toggle-btn" style="color: #7dd3fc;">Ver Info</span>
             </summary>
             <div class="producto-content">
                 <p class="b2b-desc">No dependas de un solo distribuidor. Adquiere el acceso a nuestra lista de proveedores automatizados y despacha cuentas tú mismo al instante, asegurando siempre el stock y el mejor precio.</p>
                 <div class="precios-grid" style="grid-template-columns: 1fr; max-width: 500px; margin: 0 auto;">
-                    <div class="item-card" style="border-color: #0ea5e9;">
-                        <div class="item-image"><img src="https://i.ibb.co/TqDdpSLG/image.png" alt="Bots Telegram"></div>
+                    <div class="item-card" style="border-color: rgba(14, 165, 233, 0.2);">
+                        <div class="item-image"><img src="https://i.ibb.co/TqDdpSLG/image.png" alt="Bots Telegram" style="opacity: 0.8;"></div>
                         <div class="item-body">
-                            <div class="item-title">Acceso a Lista VIP de PROVEEDORES</div>
+                            <div class="item-title" style="color: #7dd3fc;">Lista VIP de PROVEEDORES</div>
                             <div class="item-price">$4.99 <span>USD</span></div>
                             
                             <ul class="lista-beneficios" style="margin-top: 15px; margin-bottom: 25px;">
-                                <li><span>✅</span> <div>Encuentra, compara y compra servicios directamente desde Telegram.</div></li>
-                                <li><span>✅</span> <div>Lista VIP de +14 proveedores que venden streaming, IA, edición y más.</div></li>
-                                <li><span>✅</span> <div>Bots automatizados listos para procesar despachos inmediatos.</div></li>
+                                <li><span style="color: #7dd3fc;">✦</span> <div>Compara y compra servicios directamente desde Telegram.</div></li>
+                                <li><span style="color: #7dd3fc;">✦</span> <div>Lista VIP de +14 proveedores de streaming, IA y edición.</div></li>
+                                <li><span style="color: #7dd3fc;">✦</span> <div>Bots automatizados listos para procesar despachos.</div></li>
                             </ul>
 
-                            <a href="https://sites.google.com/view/nexobots/inicio" target="_blank" class="btn-excel" style="margin: 10px 0 20px 0; padding: 14px; font-size: 0.95rem;">📋 Ver Ejemplo del Catálogo</a>
-                            <a href="https://wa.me/593991296279?text=Quiero%20comprar%20la%20lista%20de%20Bots%20a%20$4.99" class="btn-comprar solid">Comprar Acceso Único</a>
+                            <a href="https://sites.google.com/view/nexobots/inicio" target="_blank" class="btn-excel" style="margin: 10px 0 20px 0; border-color: rgba(14, 165, 233, 0.3); color: #7dd3fc;">Ver Catálogo de Ejemplo</a>
+                            <a href="https://wa.me/593991296279?text=Quiero%20comprar%20la%20lista%20de%20Bots%20a%20$4.99" class="btn-comprar solid" style="background: linear-gradient(135deg, #0ea5e9, #0284c7); box-shadow: 0 4px 15px rgba(14,165,233,0.3);" target="_blank">Comprar Acceso</a>
                         </div>
                     </div>
                 </div>
@@ -602,106 +578,155 @@
         </details>
 
         <!-- 5. CANVA PRO -->
-        <details class="producto-details" style="--box-color: #06b6d4; --box-color-shadow: rgba(6,182,212,0.2);">
+        <details class="producto-details" style="--box-color: rgba(6, 182, 212, 0.4); --box-color-shadow: rgba(6,182,212,0.15);">
             <summary class="producto-summary">
                 <div class="summary-info">
-                    <div class="summary-img"><img src="https://img.icons8.com/color/96/canva.png" alt="Canva"></div>
+                    <div class="summary-img"><img src="https://img.icons8.com/color/96/canva.png" alt="Canva" style="width: 70%; height: 70%;"></div>
                     <div class="summary-title">
-                        <h3>Canva Pro Edu</h3>
-                        <p>Diseño sin límites para tus publicidades y redes.</p>
+                        <h3 style="color: #67e8f9;">Canva Pro Edu</h3>
+                        <p>Diseño sin límites para tus publicidades.</p>
                     </div>
                 </div>
-                <span class="toggle-btn">Ver Opciones ↓</span>
+                <span class="toggle-btn" style="color: #67e8f9;">Ver Opciones</span>
             </summary>
             
             <div class="producto-content">
                 <p class="b2b-desc">Lleva tus diseños al siguiente nivel creando publicidades de alto impacto, removiendo fondos al instante y usando millones de plantillas premium.</p>
                 <div class="precios-grid">
-                    <div class="item-card" style="border-color: #06b6d4;">
+                    <div class="item-card" style="border-color: rgba(6, 182, 212, 0.2);">
                         <div class="item-image"><img src="https://i.ibb.co/hFnVB1th/CANVA.jpg" alt="Canva Individual"></div>
                         <div class="item-body">
-                            <div class="item-title">Invitación Individual</div>
+                            <div class="item-title" style="color: #67e8f9;">Invitación Individual</div>
                             <div class="item-price" style="display: flex; flex-direction: column; gap: 5px; font-size: 1.4rem; margin-bottom: 25px;">
-                                <span>$3.00 <span style="font-size: 0.8rem; font-weight: normal; color: var(--text-muted);">USD (1 Año)</span></span>
-                                <span>$5.00 <span style="font-size: 0.8rem; font-weight: normal; color: var(--text-muted);">USD (3 Años)</span></span>
+                                <span>$3.00 <span style="font-size: 0.8rem; font-weight: 300; color: var(--text-muted); letter-spacing: normal;">USD (1 Año)</span></span>
+                                <span>$5.00 <span style="font-size: 0.8rem; font-weight: 300; color: var(--text-muted); letter-spacing: normal;">USD (3 Años)</span></span>
                             </div>
                             
                             <ul class="lista-beneficios" style="margin-bottom: 25px;">
-                                <li><span>✅</span> <div>Acceso a Canva Pro enviado como invitación directamente a tu correo personal.</div></li>
-                                <li><span>✅</span> <div>Úsalo sin bloqueos, marcas de agua ni límites de recursos.</div></li>
+                                <li><span style="color: #67e8f9;">✦</span> <div>Acceso a Canva Pro enviado como invitación a tu correo.</div></li>
+                                <li><span style="color: #67e8f9;">✦</span> <div>Úsalo sin bloqueos, marcas de agua ni límites de recursos.</div></li>
                             </ul>
 
                             <div style="display: flex; flex-direction: column; gap: 12px; margin-top: auto;">
-                                <a href="https://wa.me/593991296279?text=Hola,%20quiero%20Canva%20Pro%20por%201%20AÑO%20($3)" class="btn-comprar outline" style="padding: 12px;">Comprar x 1 Año ($3)</a>
-                                <a href="https://wa.me/593991296279?text=Hola,%20quiero%20Canva%20Pro%20por%203%20AÑOS%20($5)" class="btn-comprar solid" style="padding: 12px;">Comprar x 3 Años ($5)</a>
+                                <a href="https://wa.me/593991296279?text=Hola,%20quiero%20Canva%20Pro%20por%201%20AÑO%20($3)" class="btn-comprar outline" style="border-color: rgba(6,182,212,0.3); color: #67e8f9;" target="_blank">Plan 1 Año ($3)</a>
+                                <a href="https://wa.me/593991296279?text=Hola,%20quiero%20Canva%20Pro%20por%203%20AÑOS%20($5)" class="btn-comprar solid" style="background: linear-gradient(135deg, #06b6d4, #0891b2); box-shadow: 0 4px 15px rgba(6,182,212,0.3);" target="_blank">Plan 3 Años ($5)</a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="item-card" style="border-color: #8b5cf6;">
-                        <div class="item-image"><img src="https://i.ibb.co/VYsGzQSz/PANEL-CANVA.png" alt="Canva Panel"></div>
+                    <div class="item-card" style="border-color: rgba(139, 92, 246, 0.3);">
+                        <div class="item-image"><img src="https://i.ibb.co/VYsGzQSz/PANEL-CANVA.png" alt="Canva Panel" style="filter: saturate(1.2);"></div>
                         <div class="item-body">
-                            <div class="item-title">Panel CANVA PRO</div>
-                            <div class="item-price">$19.99 <span>USD</span></div>
+                            <div class="item-title" style="color: #c4b5fd;">Panel CANVA PRO</div>
+                            <div class="item-price" style="color: #a78bfa;">$19.99 <span>USD</span></div>
                             
                             <ul class="lista-beneficios" style="margin-top: 15px; margin-bottom: 25px;">
-                                <li style="border-left-color: var(--primary);">
-                                    <span>🕸️</span> <div><strong>Panel de Canva Pro con 499 invitaciones</strong> listas para revender.</div>
+                                <li style="background: rgba(139,92,246,0.05); padding: 12px; border-radius: 8px; border-left: 2px solid #a78bfa;">
+                                    <span>🕸️</span> <div><strong>Panel Canva Pro con 500 cupos</strong> listos para revender.</div>
                                 </li>
-                                <li><span>✅</span> <div>Acceso a todas las funciones premium para ti y tus clientes.</div></li>
-                                <li><span>✅</span> <div>Cuenta maestra con duración de <strong>1 a 3 años</strong>.</div></li>
+                                <li><span style="color: #c4b5fd;">✦</span> <div>Acceso a funciones pro para ti y tus clientes.</div></li>
+                                <li><span style="color: #c4b5fd;">✦</span> <div>Cuenta maestra con duración de <strong>1 a 3 años</strong>.</div></li>
                             </ul>
                             
-                            <a href="https://wa.me/593991296279?text=Hola,%20quiero%20comprar%20el%20Panel%20Canva%20de%20500%20usuarios" class="btn-comprar solid">Comprar Panel Canva</a>
+                            <a href="https://wa.me/593991296279?text=Hola,%20quiero%20comprar%20el%20Panel%20Canva%20de%20500%20usuarios" class="btn-comprar solid" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed); box-shadow: 0 4px 15px rgba(139,92,246,0.3);" target="_blank">Adquirir Panel</a>
                         </div>
                     </div>
                 </div>
             </div>
         </details>
 
-        <!-- 6. CAJITA DE LA BÓVEDA DE CURSOS -->
-        <details class="producto-details" style="--box-color: #f59e0b; --box-color-shadow: rgba(245,158,11,0.2);">
-            <summary class="producto-summary" style="background: rgba(245, 158, 11, 0.05);">
+        <!-- 6. BÓVEDA DE CURSOS -->
+        <details class="producto-details" style="--box-color: rgba(245, 158, 11, 0.4); --box-color-shadow: rgba(245,158,11,0.15);">
+            <summary class="producto-summary">
                 <div class="summary-info">
                     <div class="summary-img" style="font-size: 2rem;">📚</div>
                     <div class="summary-title">
-                        <h3>Bóveda de Cursos Premium</h3>
-                        <p>Miles de dólares en educación digital a tu alcance.</p>
+                        <h3 style="color: #fcd34d;">Bóveda de Cursos Premium</h3>
+                        <p>Educación digital masiva a tu alcance.</p>
                     </div>
                 </div>
-                <span class="toggle-btn" style="color: var(--text);">Ver Info ↓</span>
+                <span class="toggle-btn" style="color: #fcd34d;">Ver Bóveda</span>
             </summary>
             <div class="producto-content">
-                <p class="b2b-desc">Accede a nuestro archivo digital masivo que contiene más de 1000 cursos premium. Todo organizado para que estudies y aprendas.</p>
+                <p class="b2b-desc">Accede a nuestro archivo digital masivo que contiene más de 1000 cursos premium. Todo organizado para que estudies y aprendas a tu propio ritmo.</p>
                 <div class="precios-grid" style="grid-template-columns: 1fr; max-width: 500px; margin: 0 auto;">
-                    <div class="item-card" style="border-color: #f59e0b;">
-                        <div class="item-image"><img src="https://i.ibb.co/0jdHNPCp/Captura-de-pantalla-2026-08-18-225014.png" style="filter: hue-rotate(90deg);" alt="Bóveda de Cursos"></div>
+                    <div class="item-card" style="border-color: rgba(245, 158, 11, 0.2);">
+                        <div class="item-image"><img src="https://i.ibb.co/0jdHNPCp/Captura-de-pantalla-2026-08-18-225014.png" style="filter: hue-rotate(90deg) saturate(1.2);" alt="Bóveda de Cursos"></div>
                         <div class="item-body">
-                            <div class="item-title">MILES DE CURSOS A DISPOSICIÓN</div>
-                            <div class="item-price">$19.99 <span>USD</span></div>
+                            <div class="item-title" style="color: #fcd34d;">ACCESO TOTAL A CURSOS</div>
+                            <div class="item-price">$29.99 <span>USD</span></div>
                             
                             <ul class="lista-beneficios" style="margin-top: 15px; margin-bottom: 25px;">
-                                <li><span>✅</span> <div>Actualizaciones constantes de contenido nuevo.</div></li>
-                                <li><span>✅</span> <div>Estudia marketing, e-commerce, diseño, trading y mucho más.</div></li>
-                                <li><span>✅</span> <div>Descarga ilimitada sin pagar suscripciones mensuales extras.</div></li>
+                                <li><span style="color: #fcd34d;">✦</span> <div>Actualizaciones constantes de contenido nuevo.</div></li>
+                                <li><span style="color: #fcd34d;">✦</span> <div>Estudia marketing, e-commerce, diseño, trading y mucho más.</div></li>
+                                <li><span style="color: #fcd34d;">✦</span> <div>Descarga ilimitada sin pagar suscripciones mensuales extras.</div></li>
                             </ul>
 
-                            <a href="https://nexostream-cursos.netlify.app/" target="_blank" class="btn-comprar solid">Ver Catálogo y Acceder a los Cursos</a>
+                            <a href="https://nexostream-cursos.netlify.app/" target="_blank" class="btn-comprar solid" style="background: linear-gradient(135deg, #f59e0b, #d97706); color: black; box-shadow: 0 4px 15px rgba(245,158,11,0.3);">Ver Catálogo de Cursos</a>
                         </div>
                     </div>
                 </div>
             </div>
         </details>
 
+        <!-- ============================================== -->
+        <!-- CATEGORÍAS FANTASMA (OCULTAS)                  -->
+        <!-- ============================================== -->
+
+        <!-- 🟢 [INICIO] CATEGORIA EXTRA 1 (ESTADO: MODO-OFF) -->
+        <details class="producto-details MODO-OFF" style="--box-color: rgba(236, 72, 153, 0.4); --box-color-shadow: rgba(236,72,153,0.15); display: none;">
+            <summary class="producto-summary">
+                <div class="summary-info">
+                    <div class="summary-img" style="font-size: 2rem;">🚀</div>
+                    <div class="summary-title">
+                        <h3 style="color: #f472b6;">Categoría Extra 1</h3>
+                        <p>Descripción corta de tu nueva categoría.</p>
+                    </div>
+                </div>
+                <span class="toggle-btn" style="color: #f472b6;">Ver Info</span>
+            </summary>
+            <div class="producto-content">
+                <p class="b2b-desc">Descripción larga de la categoría extra.</p>
+                <div class="precios-grid" style="grid-template-columns: 1fr; max-width: 500px; margin: 0 auto;">
+                    <div class="item-card" style="border-color: rgba(236, 72, 153, 0.2);">
+                        <div class="item-body">
+                            <div class="item-title" style="color: #f472b6;">Nuevo Servicio</div>
+                            <div class="item-price">$10.00 <span>USD</span></div>
+                            <ul class="lista-beneficios" style="margin-bottom: 25px;">
+                                <li><span style="color: #f472b6;">✦</span> <div>Beneficio del nuevo servicio.</div></li>
+                            </ul>
+                            <a href="#" class="btn-comprar solid" style="background: linear-gradient(135deg, #ec4899, #db2777);">Comprar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </details>
+        <!-- 🔴 [FIN] CATEGORIA EXTRA 1 -->
+
+        <!-- 🟢 [INICIO] CATEGORIA EXTRA 2 (ESTADO: MODO-OFF) -->
+        <details class="producto-details MODO-OFF" style="--box-color: rgba(20, 184, 166, 0.4); --box-color-shadow: rgba(20,184,166,0.15); display: none;">
+            <summary class="producto-summary">
+                <div class="summary-info">
+                    <div class="summary-img" style="font-size: 2rem;">⚡</div>
+                    <div class="summary-title">
+                        <h3 style="color: #5eead4;">Categoría Extra 2</h3>
+                        <p>Descripción corta de tu nueva categoría.</p>
+                    </div>
+                </div>
+                <span class="toggle-btn" style="color: #5eead4;">Ver Info</span>
+            </summary>
+            <div class="producto-content">
+                <p class="b2b-desc">Descripción larga de la categoría extra.</p>
+            </div>
+        </details>
+        <!-- 🔴 [FIN] CATEGORIA EXTRA 2 -->
+
     </div>
 
-    <!-- FOOTER -->
+    <!-- FOOTER Y FAQ -->
     <footer>
-        <p>© 2026 NEXO STREAM B2B. Todos los derechos reservados.</p>
-
-        <!-- PREGUNTAS FRECUENTES -->
         <div class="faq-container">
-            <h3>❓ Preguntas frecuentes</h3>
+            <h3>❓ Preguntas Frecuentes</h3>
             <details>
                 <summary>¿Los productos cuentan con garantía?</summary>
                 <p>Todos los productos que mencionan garantía están respaldados. Ante la duda, pregúntanos en WhatsApp antes de realizar tu compra.</p>
@@ -716,22 +741,25 @@
             </details>
             <details>
                 <summary>¿Qué métodos de pago aceptan?</summary>
-                <p>Aceptamos pagos mediante Binance Pay utilizando USDT o USDC sin comisiones. También puedes preguntar por métodos de pago locales.</p>
+                <p>Aceptamos pagos mediante Binance Pay utilizando USDT o USDC sin comisiones. También puedes preguntar por métodos de pago locales de Ecuador.</p>
             </details>
         </div>
 
         <p class="payment-info">
-            🛡️ <strong>Pagos seguros</strong><br>
-            Binance Pay (USDT / USDC) · Transferencia directa
+            🛡️ <strong style="color: white; font-weight: 600;">Pagos 100% Seguros</strong><br>
+            Binance Pay (USDT / USDC) · Transferencia Bancaria
         </p>
+        <p style="margin-top: 20px; font-family: var(--font-lujo); opacity: 0.5;">© 2026 NEXO STREAM B2B. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- MODAL DE PRECIOS -->
+    <!-- ============================================== -->
+    <!-- MODAL 1: PRECIOS EN VIVO (SHEETS)              -->
+    <!-- ============================================== -->
     <div id="modal-precios" class="modal-overlay">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>📊 Lista de Precios en Vivo</h3>
-                <button class="btn-close" onclick="cerrarModalPrecios()">×</button>
+                <h3 style="color: #93c5fd;">📊 Lista de Precios Fábrica</h3>
+                <button class="btn-close" onclick="cerrarModal('modal-precios')">×</button>
             </div>
             <div class="modal-body" id="modal-body-precios">
                 <div class="loading-text">Conectando con la base de datos... ⏳</div>
@@ -739,79 +767,61 @@
         </div>
     </div>
 
-    <!-- SCRIPT DE FUNCIONAMIENTO (Cupón y Google Sheets Inteligente) -->
+    <!-- ============================================== -->
+    <!-- MODAL 2: CAPTURAS DE MÉTODOS                   -->
+    <!-- ============================================== -->
+    <div id="modal-metodos" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 style="color: #d8b4fe;">🔐 Interior del Grupo VIP</h3>
+                <button class="btn-close" onclick="cerrarModal('modal-metodos')">×</button>
+            </div>
+            <div class="modal-body">
+                
+                <!-- CARRUSEL HORIZONTAL -->
+                <div class="carousel-wrapper">
+                    <button class="carousel-btn left" onclick="moverCarrusel(-1)">&#10094;</button>
+                    <div class="carousel-track" id="track-metodos">
+                        <div class="carousel-slide"><img src="https://i.ibb.co/8q9JPrg/photo-1-2026-10-30-22-45-33.jpg" alt="C1" loading="lazy"></div>
+                        <div class="carousel-slide"><img src="https://i.ibb.co/Kpq67LsM/photo-2-2026-10-30-22-45-33.jpg" alt="C2" loading="lazy"></div>
+                        <div class="carousel-slide"><img src="https://i.ibb.co/DPGcdWKs/photo-3-2026-10-30-22-45-33.jpg" alt="C3" loading="lazy"></div>
+                        <div class="carousel-slide"><img src="https://i.ibb.co/xtp1wt9C/photo-4-2026-10-30-22-45-33.jpg" alt="C4" loading="lazy"></div>
+                        <div class="carousel-slide"><img src="https://i.ibb.co/d4RdCjp1/photo-5-2026-10-30-22-45-33.jpg" alt="C5" loading="lazy"></div>
+                        <div class="carousel-slide"><img src="https://i.ibb.co/1fzj5GPS/photo-6-2026-10-30-22-45-33.jpg" alt="C6" loading="lazy"></div>
+                        <div class="carousel-slide"><img src="https://i.ibb.co/KjYb0fGk/photo-1-2026-10-30-22-50-04.jpg" alt="C7" loading="lazy"></div>
+                        <div class="carousel-slide"><img src="https://i.ibb.co/RG23V3bw/photo-2-2026-10-30-22-50-04.jpg" alt="C8" loading="lazy"></div>
+                        <div class="carousel-slide"><img src="https://i.ibb.co/9HNxQYmz/photo-3-2026-10-30-22-50-04.jpg" alt="C9" loading="lazy"></div>
+                    </div>
+                    <button class="carousel-btn right" onclick="moverCarrusel(1)">&#10095;</button>
+                </div>
+
+                <div class="metodos-info">
+                    <h4>¿Qué encontrarás adentro?</h4>
+                    <p>Es un grupo donde aprenderás desde lo básico para sacar cuentas streaming como Netflix, HBO Max, Disney, Canva, etc. Son clases grabadas y explicadas para que tú puedas sacar las cuentas, también se hacen clases en vivo, se actualizan los métodos, chat abierto y una sección para vender tú mismo o comprar todo legal.</p>
+                    
+                    <h4 style="margin-top: 10px;">Métodos Disponibles:</h4>
+                    <div class="lista-metodos-caja">
+                        <ul>
+                            <li><span style="color: #d8b4fe;">📌</span> <div>TODO LO QUE VES EN LAS CAPTURAS Y MÁS</div></li>
+                            <li><span style="color: #d8b4fe;">📌</span> <div>MÉTODOS POR BINS</div></li>
+                            <li><span style="color: #d8b4fe;">📌</span> <div>MÉTODOS POR CCS Premium</div></li>
+                            <li><span style="color: #d8b4fe;">📌</span> <div>MÉTODOS LEGALES</div></li>
+                            <li><span style="color: #d8b4fe;">📌</span> <div>COMBOS Y HITS Premium</div></li>
+                            <li><span style="color: #d8b4fe;">📌</span> <div>Pines y Tarjetas Virtuales</div></li>
+                            <li style="color: #d8b4fe; font-weight:600; justify-content: center; border:none; padding-top: 15px;">Y muchos métodos más...</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ============================================== -->
+    <!-- SCRIPT DE FUNCIONAMIENTO                       -->
+    <!-- ============================================== -->
     <script>
-        function aplicarCupon() {
-            const input = document.getElementById('coupon-input').value.trim().toLowerCase();
-            const msg = document.getElementById('coupon-msg');
-            const priceBase = document.getElementById('price-boveda');
-            const priceDiscount = document.getElementById('price-boveda-discount');
-            const btnComprar = document.getElementById('btn-comprar-boveda');
-
-            // Lista de cupones válidos
-            const cupones = ['nexoforo', 'nexoyt', 'nexotiktok'];
-
-            if (cupones.includes(input)) {
-                msg.style.color = '#22c55e';
-                msg.innerText = '¡Cupón ' + input.toUpperCase() + ' aplicado con éxito!';
-                
-                // Ocultar precio viejo y mostrar el nuevo
-                priceBase.style.display = 'none';
-                priceDiscount.style.display = 'flex';
-                
-                // ACTUALIZAR EL LINK DE WHATSAPP CON EL PRECIO DE $15.00
-                btnComprar.href = "https://wa.me/593991296279?text=Hola,%20usé%20el%20cupón%20" + input.toUpperCase() + "%20y%20quiero%20el%20acceso%20al%20Grupo%20VIP%20por%20$15.00";
-                
-                // Esconder la caja de ingresar cupón
-                document.getElementById('coupon-container').style.display = 'none';
-            } else {
-                msg.style.color = '#ef4444';
-                msg.innerText = 'Cupón inválido o expirado.';
-                setTimeout(() => { msg.innerText = ''; }, 3000);
-            }
-        }
-
-        // FUNCIONES DE GOOGLE SHEETS PARA EL MODAL
-        const urlCSV = "https://docs.google.com/spreadsheets/d/1D-ZlJbg8xTBXbZnEiYqgsiWMkf_umuhLxbqd09p_YJo/export?format=csv";
-
-        // Parser robusto para leer el CSV respetando las comas dentro del texto
-        function parseCSV(text) {
-            let result = [];
-            let row = [];
-            let inQuotes = false;
-            let val = "";
-            for (let i = 0; i < text.length; i++) {
-                let char = text[i];
-                if (inQuotes) {
-                    if (char === '"') {
-                        if (i + 1 < text.length && text[i+1] === '"') {
-                            val += '"'; i++;
-                        } else {
-                            inQuotes = false;
-                        }
-                    } else {
-                        val += char;
-                    }
-                } else {
-                    if (char === '"') {
-                        inQuotes = true;
-                    } else if (char === ',') {
-                        row.push(val); val = "";
-                    } else if (char === '\n' || char === '\r') {
-                        row.push(val); result.push(row);
-                        row = []; val = "";
-                        if (char === '\r' && i + 1 < text.length && text[i+1] === '\n') i++;
-                    } else {
-                        val += char;
-                    }
-                }
-            }
-            if (val !== "" || row.length > 0) {
-                row.push(val); result.push(row);
-            }
-            return result;
-        }
-
+        // 1. ABRIR Y CERRAR MODALES
         function abrirModalPrecios() {
             const modal = document.getElementById('modal-precios');
             modal.style.display = 'flex';
@@ -819,10 +829,96 @@
             cargarPreciosSheets();
         }
 
-        function cerrarModalPrecios() {
-            const modal = document.getElementById('modal-precios');
+        function abrirModalMetodos() {
+            const modal = document.getElementById('modal-metodos');
+            modal.style.display = 'flex';
+            setTimeout(() => modal.classList.add('active'), 10);
+            indiceCarrusel = 0; 
+            actualizarCarrusel();
+        }
+
+        function cerrarModal(id) {
+            const modal = document.getElementById(id);
             modal.classList.remove('active');
-            setTimeout(() => modal.style.display = 'none', 300);
+            setTimeout(() => modal.style.display = 'none', 400);
+        }
+
+        // 2. LÓGICA DEL CARRUSEL DE MÉTODOS
+        let indiceCarrusel = 0;
+        function moverCarrusel(direccion) {
+            const track = document.getElementById('track-metodos');
+            const totalSlides = document.querySelectorAll('.carousel-slide').length;
+            
+            indiceCarrusel += direccion;
+            if (indiceCarrusel < 0) indiceCarrusel = totalSlides - 1;
+            if (indiceCarrusel >= totalSlides) indiceCarrusel = 0;
+            
+            actualizarCarrusel();
+        }
+        function actualizarCarrusel() {
+            const track = document.getElementById('track-metodos');
+            track.style.transform = `translateX(-${indiceCarrusel * 100}%)`;
+        }
+
+        // 3. LÓGICA DEL CUPÓN
+        function aplicarCupon() {
+            const input = document.getElementById('coupon-input').value.trim().toLowerCase();
+            const msg = document.getElementById('coupon-msg');
+            const priceBase = document.getElementById('price-boveda');
+            const priceDiscount = document.getElementById('price-boveda-discount');
+            const newPriceVal = document.getElementById('price-boveda-new-val');
+            const btnComprar = document.getElementById('btn-comprar-boveda');
+            
+            const cuponesNormales = ['nexoforo', 'nexoyt', 'nexotiktok'];
+            const cuponEspecial = 'nexo10';
+
+            if (cuponesNormales.includes(input)) {
+                msg.style.color = '#10b981';
+                msg.innerText = '¡Cupón ' + input.toUpperCase() + ' aplicado!';
+                priceBase.style.display = 'none';
+                priceDiscount.style.display = 'flex';
+                newPriceVal.innerText = '$15.00';
+                btnComprar.href = "https://wa.me/593991296279?text=Hola,%20usé%20el%20cupón%20" + input.toUpperCase() + "%20y%20quiero%20el%20acceso%20al%20Grupo%20VIP%20por%20$15.00";
+                document.getElementById('coupon-container').style.display = 'none';
+            } else if (input === cuponEspecial) {
+                msg.style.color = '#10b981';
+                msg.innerText = '¡Cupón Secreto Aplicado!';
+                priceBase.style.display = 'none';
+                priceDiscount.style.display = 'flex';
+                newPriceVal.innerText = '$10.00';
+                btnComprar.href = "https://wa.me/593991296279?text=Hola,%20usé%20el%20cupón%20secreto%20NEXO10%20y%20quiero%20el%20acceso%20al%20Grupo%20VIP%20por%20$10.00";
+                document.getElementById('coupon-container').style.display = 'none';
+            } else {
+                msg.style.color = '#ef4444';
+                msg.innerText = 'Cupón inválido.';
+                setTimeout(() => { msg.innerText = ''; }, 3000);
+            }
+        }
+
+        // 4. LECTOR DE GOOGLE SHEETS
+        const urlCSV = "https://docs.google.com/spreadsheets/d/1D-ZlJbg8xTBXbZnEiYqgsiWMkf_umuhLxbqd09p_YJo/export?format=csv";
+
+        function parseCSV(text) {
+            let result = []; let row = []; let inQuotes = false; let val = "";
+            for (let i = 0; i < text.length; i++) {
+                let char = text[i];
+                if (inQuotes) {
+                    if (char === '"') {
+                        if (i + 1 < text.length && text[i+1] === '"') { val += '"'; i++; } 
+                        else { inQuotes = false; }
+                    } else { val += char; }
+                } else {
+                    if (char === '"') { inQuotes = true; } 
+                    else if (char === ',') { row.push(val); val = ""; } 
+                    else if (char === '\n' || char === '\r') {
+                        row.push(val); result.push(row);
+                        row = []; val = "";
+                        if (char === '\r' && i + 1 < text.length && text[i+1] === '\n') i++;
+                    } else { val += char; }
+                }
+            }
+            if (val !== "" || row.length > 0) { row.push(val); result.push(row); }
+            return result;
         }
 
         async function cargarPreciosSheets() {
@@ -830,31 +926,23 @@
             try {
                 const response = await fetch(urlCSV);
                 const data = await response.text();
-                
                 const filas = parseCSV(data);
-                let html = '<div style="padding: 20px;">';
+                
+                let html = '<div style="padding: 10px 0;">';
                 
                 filas.forEach((fila) => {
                     const celdasLlenas = fila.map(c => c.trim()).filter(c => c !== '');
-                    
                     if (celdasLlenas.length === 0) return;
 
-                    // Si solo hay una columna llena, es un Título de Categoría
                     if (celdasLlenas.length === 1) {
                         let texto = celdasLlenas[0];
-                        // Filtramos textos sueltos o errores del excel como "PANEL"
                         if (texto.toLowerCase() === 'panel' || texto.toLowerCase().includes('servicio')) return; 
-                        
                         html += `<div class="categoria-titulo">${texto}</div>`;
                     } 
-                    // Si hay 2 o más columnas, es un Servicio (Nombre y Precio)
                     else if (celdasLlenas.length >= 2) {
                         let nombre = celdasLlenas[0];
                         let precio = celdasLlenas[1];
-                        
-                        // Ignoramos los encabezados de las tablas ("Servicio", "Precio", "$")
                         if (nombre.toLowerCase().includes('servicio') || precio.toLowerCase().includes('precio') || precio === '($)') return;
-
                         html += `
                         <div class="servicio-item">
                             <div class="servicio-nombre">${nombre}</div>
@@ -862,11 +950,10 @@
                         </div>`;
                     }
                 });
-                
                 html += '</div>';
                 body.innerHTML = html;
             } catch (error) {
-                body.innerHTML = '<div class="loading-text" style="color:#ef4444;">Error al conectar con la base de datos. Verifica tu conexión.</div>';
+                body.innerHTML = '<div class="loading-text" style="color:#ef4444;">Error de conexión. Por favor, intenta de nuevo.</div>';
             }
         }
 
@@ -879,7 +966,7 @@
         });
     </script>
 
-    <!-- BLOQUEADOR DE NAVEGADOR TIKTOK / FACEBOOK  -->
+    <!-- 5. BLOQUEADOR NAVEGADOR TIKTOK / FB -->
     <div id="app-browser-blocker" style="display: none;">
         <svg class="blocker-arrow" viewBox="0 0 100 100">
             <path d="M 20 80 Q 70 80 80 20" fill="transparent" stroke="black" stroke-width="3" stroke-linecap="round"/>
@@ -888,26 +975,15 @@
 
         <div class="blocker-content">
             <div class="anim-circle">
-                <div class="step step-1">
-                    <span class="dots">•••</span>
-                    <span class="hand-icon">👆</span>
-                </div>
-                <div class="step step-2">
-                    <span class="globe-icon">🌐</span>
-                    <span class="text">Abrir en el navegador</span>
-                    <span class="hand-icon">👆</span>
-                </div>
+                <div class="step step-1"><span class="dots">•••</span><span class="hand-icon">👆</span></div>
+                <div class="step step-2"><span class="globe-icon">🌐</span><span class="text">Abrir en el navegador</span><span class="hand-icon">👆</span></div>
             </div>
             <h2>Para abrir esta página</h2>
             <p>toca los <strong>tres puntos (•••)</strong> arriba a la derecha y elige<br><strong>"Abrir en el navegador"</strong>.</p>
         </div>
 
         <style>
-            #app-browser-blocker {
-                position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-                background-color: #ffffff; z-index: 999999; display: flex; flex-direction: column;
-                align-items: center; justify-content: center; font-family: sans-serif; text-align: center;
-            }
+            #app-browser-blocker { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: #ffffff; z-index: 999999; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: sans-serif; text-align: center; }
             .blocker-arrow { position: absolute; top: 30px; right: 30px; width: 80px; height: 80px; animation: bounce-arrow 1.5s infinite alternate ease-in-out; }
             .blocker-content { display: flex; flex-direction: column; align-items: center; gap: 20px; }
             .anim-circle { width: 180px; height: 180px; background: #ffffff; border-radius: 50%; box-shadow: 0 10px 30px rgba(0,0,0,0.1); position: relative; display: flex; align-items: center; justify-content: center; }
