@@ -20,6 +20,7 @@
 
     <style>
         :root{
+            color-scheme: dark;
             --bg-dark:#060608;
             --card-glass: rgba(22,22,26,0.62);
             --primary:#4f8cff;
@@ -34,13 +35,6 @@
 
             --font-base:'Manrope', sans-serif;
             --font-lujo:'Cormorant Garamond', serif;
-        }
-        :root[data-theme="dark"]{ color-scheme: dark; }
-        @media (prefers-color-scheme: light){
-            :root:not([data-theme="dark"]){
-                --bg-dark:#f4f3f0; --card-glass: rgba(255,255,255,0.75);
-                --text:#17171b; --text-muted:#5c5c66; --border-glass: rgba(0,0,0,0.08);
-            }
         }
 
         *{margin:0;padding:0;box-sizing:border-box;font-family:var(--font-base);}
@@ -106,7 +100,7 @@
 
         .producto-content{ padding:0 25px 35px 25px; border-top:1px solid var(--border-glass); margin-top:5px; padding-top:25px; }
 
-        .btn-youtube{ display:flex; align-items:center; justify-content:center; gap:8px; background: rgba(239,68,68,0.05); border:1px solid rgba(239,68,68,0.3); color:#ef4444; padding:12px 20px; border-radius:12px; font-weight:600; font-size:0.95rem; margin:20px auto; width:100%; max-width:300px; transition: all 0.3s ease; text-align: center; }
+        .btn-youtube{ display:flex; align-items:center; justify-content:center; gap:8px; background: rgba(239,68,68,0.05); border:1px solid rgba(239,68,68,0.3); color:#ef4444; padding:12px 20px; border-radius:30px; font-weight:600; font-size:0.95rem; margin:20px auto; width:100%; max-width:300px; transition: all 0.3s ease; text-align: center; }
         .btn-youtube:hover{ background: rgba(239, 68, 68, 0.15); border-color:#ef4444; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(239,68,68,0.2);}
         
         .btn-excel{ display:flex; align-items:center; justify-content:center; gap:10px; background: rgba(59, 130, 246, 0.05); border:1px solid rgba(59, 130, 246, 0.4); color:white; padding:16px; border-radius:14px; font-size:0.95rem; font-weight:600; margin:25px auto 10px auto; max-width:800px; transition: all 0.3s ease; text-align: center; line-height: 1.4; width:100%; cursor:pointer; position:relative; overflow:hidden;}
@@ -114,7 +108,6 @@
         .btn-excel:hover::before{left:100%;}
         .btn-excel:hover{ background: rgba(59, 130, 246, 0.15); border-color:var(--primary); box-shadow: 0 0 20px var(--primary-glow); transform: translateY(-2px); }
         
-        /* BOTÓN DE CAPTURAS ARREGLADO */
         .btn-capturas { display: flex; align-items: center; justify-content: center; gap: 10px; background: #8b5cf6; border: none; color: white; padding: 12px; border-radius: 30px; font-size: 0.95rem; font-weight: 600; transition: all 0.3s ease; text-align: center; width: 100%; cursor: pointer; margin-top: 15px;}
         .btn-capturas:hover { background: #7c3aed; box-shadow: 0 4px 15px rgba(139,92,246,0.4); transform: translateY(-2px);}
 
@@ -760,15 +753,15 @@
                 <div class="carousel-wrapper">
                     <button class="carousel-btn left" onclick="moverCarrusel(-1)">&#10094;</button>
                     <div class="carousel-track" id="track-metodos">
-                        <div class="carousel-slide"><img src="imagenes/M1.jpg" alt="M1" loading="lazy"></div>
-                        <div class="carousel-slide"><img src="imagenes/M2.jpg" alt="M2" loading="lazy"></div>
-                        <div class="carousel-slide"><img src="imagenes/M3.jpg" alt="M3" loading="lazy"></div>
-                        <div class="carousel-slide"><img src="imagenes/M4.jpg" alt="M4" loading="lazy"></div>
-                        <div class="carousel-slide"><img src="imagenes/M5.jpg" alt="M5" loading="lazy"></div>
-                        <div class="carousel-slide"><img src="imagenes/M6.jpg" alt="M6" loading="lazy"></div>
-                        <div class="carousel-slide"><img src="imagenes/M7.jpg" alt="M7" loading="lazy"></div>
-                        <div class="carousel-slide"><img src="imagenes/M8.jpg" alt="M8" loading="lazy"></div>
-                        <div class="carousel-slide"><img src="imagenes/M9.jpg" alt="M9" loading="lazy"></div>
+                        <div class="carousel-slide"><img src="imagenes/M1.jpg" alt="C1" loading="lazy"></div>
+                        <div class="carousel-slide"><img src="imagenes/M2.jpg" alt="C2" loading="lazy"></div>
+                        <div class="carousel-slide"><img src="imagenes/M3.jpg" alt="C3" loading="lazy"></div>
+                        <div class="carousel-slide"><img src="imagenes/M4.jpg" alt="C4" loading="lazy"></div>
+                        <div class="carousel-slide"><img src="imagenes/M5.jpg" alt="C5" loading="lazy"></div>
+                        <div class="carousel-slide"><img src="imagenes/M6.jpg" alt="C6" loading="lazy"></div>
+                        <div class="carousel-slide"><img src="imagenes/M7.jpg" alt="C7" loading="lazy"></div>
+                        <div class="carousel-slide"><img src="imagenes/M8.jpg" alt="C8" loading="lazy"></div>
+                        <div class="carousel-slide"><img src="imagenes/M9.jpg" alt="C9" loading="lazy"></div>
                     </div>
                     <button class="carousel-btn right" onclick="moverCarrusel(1)">&#10095;</button>
                 </div>
@@ -940,5 +933,53 @@
             }
         }
     </script>
+
+    <!-- 5. BLOQUEADOR NAVEGADOR TIKTOK / FB -->
+    <div id="app-browser-blocker" style="display: none;">
+        <svg class="blocker-arrow" viewBox="0 0 100 100">
+            <path d="M 20 80 Q 70 80 80 20" fill="transparent" stroke="black" stroke-width="3" stroke-linecap="round"/>
+            <polygon points="75,25 80,15 85,25" fill="black"/>
+        </svg>
+
+        <div class="blocker-content">
+            <div class="anim-circle">
+                <div class="step step-1"><span class="dots">•••</span><span class="hand-icon">👆</span></div>
+                <div class="step step-2"><span class="globe-icon">🌐</span><span class="text">Abrir en el navegador</span><span class="hand-icon">👆</span></div>
+            </div>
+            <h2>Para abrir esta página</h2>
+            <p>toca los <strong>tres puntos (•••)</strong> arriba a la derecha y elige<br><strong>"Abrir en el navegador"</strong>.</p>
+        </div>
+
+        <style>
+            #app-browser-blocker { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: #ffffff; z-index: 999999; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: sans-serif; text-align: center; }
+            .blocker-arrow { position: absolute; top: 30px; right: 30px; width: 80px; height: 80px; animation: bounce-arrow 1.5s infinite alternate ease-in-out; }
+            .blocker-content { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+            .anim-circle { width: 180px; height: 180px; background: #ffffff; border-radius: 50%; box-shadow: 0 10px 30px rgba(0,0,0,0.1); position: relative; display: flex; align-items: center; justify-content: center; }
+            .step { position: absolute; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%; animation-duration: 4s; animation-iteration-count: infinite; }
+            .step-1 { animation-name: fade-step-1; }
+            .step-2 { animation-name: fade-step-2; opacity: 0; }
+            .dots { font-size: 2.5rem; font-weight: bold; line-height: 1; color: black; }
+            .globe-icon { font-size: 2rem; margin-bottom: 5px; }
+            .step-2 .text { font-size: 0.9rem; font-weight: 600; padding: 5px 15px; background: #f1f1f1; border-radius: 20px; color: black; }
+            .hand-icon { font-size: 2rem; position: absolute; bottom: 20px; right: 20px; animation: click-hand 0.5s infinite alternate; }
+            #app-browser-blocker h2 { font-size: 1.4rem; color: #000; margin: 0; }
+            #app-browser-blocker p { font-size: 1rem; color: #555; margin: 10px 0 0 0; line-height: 1.5; padding: 0 20px;}
+            @keyframes fade-step-1 { 0%, 40% { opacity: 1; transform: scale(1); } 50%, 90% { opacity: 0; transform: scale(0.95); } 100% { opacity: 1; transform: scale(1); } }
+            @keyframes fade-step-2 { 0%, 40% { opacity: 0; transform: scale(0.95); } 50%, 90% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(0.95); } }
+            @keyframes click-hand { 0% { transform: translateY(0) scale(1); } 100% { transform: translateY(-5px) scale(0.9); } }
+            @keyframes bounce-arrow { 0% { transform: translate(0, 0); } 100% { transform: translate(10px, -10px); } }
+        </style>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var ua = navigator.userAgent || navigator.vendor || window.opera;
+                if (ua.indexOf("TikTok") > -1 || ua.indexOf("Instagram") > -1 || ua.indexOf("FBAN") > -1 || ua.indexOf("FBAV") > -1) {
+                    document.getElementById("app-browser-blocker").style.display = "flex";
+                    document.body.style.overflow = "hidden";
+                }
+            });
+        </script>
+    </div>
+
 </body>
 </html>
