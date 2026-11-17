@@ -114,7 +114,7 @@
         .btn-excel:hover::before{left:100%;}
         .btn-excel:hover{ background: rgba(59, 130, 246, 0.15); border-color:var(--primary); box-shadow: 0 0 20px var(--primary-glow); transform: translateY(-2px); }
         
-        /* AQUÍ ESTÁ EL BOTÓN DE CAPTURAS ARREGLADO */
+        /* BOTÓN DE CAPTURAS ARREGLADO */
         .btn-capturas { display: flex; align-items: center; justify-content: center; gap: 10px; background: #8b5cf6; border: none; color: white; padding: 12px; border-radius: 30px; font-size: 0.95rem; font-weight: 600; transition: all 0.3s ease; text-align: center; width: 100%; cursor: pointer; margin-top: 15px;}
         .btn-capturas:hover { background: #7c3aed; box-shadow: 0 4px 15px rgba(139,92,246,0.4); transform: translateY(-2px);}
 
@@ -183,8 +183,8 @@
 
         .item-body{padding:25px; display:flex; flex-direction:column; flex-grow:1;}
         .item-title{ font-family: var(--font-lujo); font-size:1.35rem; color:var(--text); text-align:center; margin-bottom:16px; font-weight:700; letter-spacing:.3px;}
-        .item-price{ font-size:1.9rem; font-weight:700; font-family: var(--font-lujo); color:var(--primary); text-align:center; margin-bottom:20px; letter-spacing:.3px;}
-        .item-price span{ font-size:0.86rem; font-family: var(--font-base); font-weight:500; color:var(--text-muted); letter-spacing:.5px;}
+        .item-price{ font-size:1.9rem; font-weight:700; font-family: var(--font-lujo); color:var(--primary); text-align:center; margin-bottom:20px; letter-spacing:-1px;}
+        .item-price span{ font-size:0.9rem; font-weight:400; color:var(--text-muted); letter-spacing:normal;}
 
         footer{ text-align:center; padding:50px 20px 44px; border-top:1px solid var(--border-glass); color:var(--text-muted); font-size:0.9rem; font-weight:300;}
 
@@ -202,10 +202,10 @@
 
         /* CUPONES ELEGANTES */
         .coupon-box{display:flex; gap:10px; margin-bottom:15px; justify-content:center;}
-        .coupon-input{ background: rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.1); color:white; padding:12px 15px; border-radius:30px; outline:none; width:65%; font-size:0.9rem; text-transform:uppercase; transition:0.3s; font-family: var(--font-base);}
-        .coupon-input:focus{ border-color:var(--accent); box-shadow: 0 0 10px rgba(233,185,73,0.2);}
-        .btn-aplicar{ background: rgba(233,185,73,0.1); color:#f3d78b; border:1px solid rgba(233,185,73,0.3); padding:10px 18px; border-radius:30px; cursor:pointer; font-weight:600; transition:0.3s; font-size:0.9rem;}
-        .btn-aplicar:hover{ background: rgba(233,185,73,0.2); border-color:var(--accent); color:white; }
+        .coupon-input{ background: rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.1); color:white; padding:12px 15px; border-radius:10px; outline:none; width:65%; font-size:0.9rem; text-transform:uppercase; transition:0.3s; font-family: var(--font-base);}
+        .coupon-input:focus{ border-color:#a78bfa; box-shadow: 0 0 10px rgba(167,139,250,0.2);}
+        .btn-aplicar{ background: rgba(167, 139, 250, 0.1); color:#c4b5fd; border:1px solid rgba(167,139,250,0.3); padding:10px 18px; border-radius:10px; cursor:pointer; font-weight:600; transition:0.3s; font-size:0.9rem;}
+        .btn-aplicar:hover{ background: rgba(167,139,250,0.2); border-color:#a78bfa; color:white; }
         .coupon-msg{text-align:center; font-size:0.85rem; margin-bottom:15px; font-weight:400; min-height:20px;}
 
         /* MODALES (VENTANAS EMERGENTES) - GLASSMORPHISM */
@@ -449,7 +449,7 @@
             </summary>
             
             <div class="producto-content">
-                <div class="precios-grid">
+                <div class="precios-grid" style="grid-template-columns: 1fr; max-width: 500px; margin: 0 auto;">
                     
                     <!-- COMBO 1 -->
                     <div class="item-card" style="border-color: rgba(16, 185, 129, 0.2);">
@@ -713,12 +713,12 @@
                 <div class="trust-gallery">
                     <div class="trust-slide"><img src="imagenes/C1.jpg" alt="Pago confirmado 1" loading="lazy"></div>
                     <div class="trust-slide"><img src="imagenes/C2.jpg" alt="Pago confirmado 2" loading="lazy"></div>
-                    <div class="trust-slide"><img src="imagenes/C3.jpg" alt="Pago confirmado 3" loading="lazy"></div>
-                    <div class="trust-slide"><img src="imagenes/C4.jpg" alt="Pago confirmado 4" loading="lazy"></div>
-                    <div class="trust-slide"><img src="imagenes/C5.jpg" alt="Pago confirmado 5" loading="lazy"></div>
-                    <div class="trust-slide"><img src="imagenes/C6.jpg" alt="Pago confirmado 6" loading="lazy"></div>
-                    <div class="trust-slide"><img src="imagenes/C7.jpg" alt="Pago confirmado 7" loading="lazy"></div>
-                    <div class="trust-slide"><img src="imagenes/C8.jpg" alt="Pago confirmado 8" loading="lazy"></div>
+                    <div class="trust-slide"><img src="imagenes/C3.png" alt="Pago confirmado 3" loading="lazy"></div>
+                    <div class="trust-slide"><img src="imagenes/C4.png" alt="Pago confirmado 4" loading="lazy"></div>
+                    <div class="trust-slide"><img src="imagenes/C5.png" alt="Pago confirmado 5" loading="lazy"></div>
+                    <div class="trust-slide"><img src="imagenes/C6.png" alt="Pago confirmado 6" loading="lazy"></div>
+                    <div class="trust-slide"><img src="imagenes/C7.png" alt="Pago confirmado 7" loading="lazy"></div>
+                    <div class="trust-slide"><img src="imagenes/C8.png" alt="Pago confirmado 8" loading="lazy"></div>
                 </div>
                 <div style="padding: 20px 24px 26px;">
                     <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.7; margin-bottom: 18px; text-align:center;">
@@ -760,15 +760,15 @@
                 <div class="carousel-wrapper">
                     <button class="carousel-btn left" onclick="moverCarrusel(-1)">&#10094;</button>
                     <div class="carousel-track" id="track-metodos">
-                        <div class="carousel-slide"><img src="imagenes/M1.jpg" alt="C1" loading="lazy"></div>
-                        <div class="carousel-slide"><img src="imagenes/M2.jpg" alt="C2" loading="lazy"></div>
-                        <div class="carousel-slide"><img src="imagenes/M3.jpg" alt="C3" loading="lazy"></div>
-                        <div class="carousel-slide"><img src="imagenes/M4.jpg" alt="C4" loading="lazy"></div>
-                        <div class="carousel-slide"><img src="imagenes/M5.jpg" alt="C5" loading="lazy"></div>
-                        <div class="carousel-slide"><img src="imagenes/M6.jpg" alt="C6" loading="lazy"></div>
-                        <div class="carousel-slide"><img src="imagenes/M7.jpg" alt="C7" loading="lazy"></div>
-                        <div class="carousel-slide"><img src="imagenes/M8.jpg" alt="C8" loading="lazy"></div>
-                        <div class="carousel-slide"><img src="imagenes/M9.jpg" alt="C9" loading="lazy"></div>
+                        <div class="carousel-slide"><img src="imagenes/M1.jpg" alt="M1" loading="lazy"></div>
+                        <div class="carousel-slide"><img src="imagenes/M2.jpg" alt="M2" loading="lazy"></div>
+                        <div class="carousel-slide"><img src="imagenes/M3.jpg" alt="M3" loading="lazy"></div>
+                        <div class="carousel-slide"><img src="imagenes/M4.jpg" alt="M4" loading="lazy"></div>
+                        <div class="carousel-slide"><img src="imagenes/M5.jpg" alt="M5" loading="lazy"></div>
+                        <div class="carousel-slide"><img src="imagenes/M6.jpg" alt="M6" loading="lazy"></div>
+                        <div class="carousel-slide"><img src="imagenes/M7.jpg" alt="M7" loading="lazy"></div>
+                        <div class="carousel-slide"><img src="imagenes/M8.jpg" alt="M8" loading="lazy"></div>
+                        <div class="carousel-slide"><img src="imagenes/M9.jpg" alt="M9" loading="lazy"></div>
                     </div>
                     <button class="carousel-btn right" onclick="moverCarrusel(1)">&#10095;</button>
                 </div>
